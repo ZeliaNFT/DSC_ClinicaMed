@@ -2,6 +2,7 @@ package br.edu.ifnmg.clinicamedica_logicaapp;
 
 import br.edu.ifnmg.clinicamedica_logicaapp.Atendimento;
 import br.edu.ifnmg.clinicamedica_logicaapp.AtendimentoSituacoes;
+import br.edu.ifnmg.clinicamedica_logicaapp.Especialidade;
 import br.edu.ifnmg.clinicamedica_logicaapp.Medico;
 import br.edu.ifnmg.clinicamedica_logicaapp.Paciente;
 import br.edu.ifnmg.clinicamedica_logicaapp.TipoAtendimento;
@@ -14,13 +15,14 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-02-24T19:46:40", comments="EclipseLink-2.7.9.v20210604-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-03-09T19:19:35", comments="EclipseLink-2.7.9.v20210604-rNA")
 @StaticMetamodel(Atendimento.class)
 public class Atendimento_ { 
 
     public static volatile SingularAttribute<Atendimento, Integer> qtdDiasRetorno;
     public static volatile SingularAttribute<Atendimento, AtendimentoSituacoes> situacao;
     public static volatile SingularAttribute<Atendimento, String> prescricao;
+    public static volatile SingularAttribute<Atendimento, Especialidade> especialidade;
     public static volatile SingularAttribute<Atendimento, BigDecimal> valor;
     public static volatile SingularAttribute<Atendimento, String> motivoCancel;
     public static volatile SingularAttribute<Atendimento, Time> horaInicio;

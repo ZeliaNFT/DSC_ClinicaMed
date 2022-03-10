@@ -86,6 +86,10 @@ public class Atendimento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "usuario_fk")
     private Usuario usuario;
+    
+    @ManyToOne
+    @JoinColumn(name = "especialidade_fk")
+    private Especialidade especialidade;
 
     public Long getId() {
         return id;
