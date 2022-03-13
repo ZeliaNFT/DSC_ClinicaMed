@@ -55,8 +55,14 @@ public class Paciente extends Pessoa implements Serializable {
     }
     
     public Paciente(){
-    
-   }
+        this.id = 0L;
+        this.historico = "";
+    }
+    public Paciente(String nome, String historico){
+        this.id = 0L;
+        this.setNome(nome);
+        this.historico = "";
+    }
 
     @Override
     public int hashCode() {

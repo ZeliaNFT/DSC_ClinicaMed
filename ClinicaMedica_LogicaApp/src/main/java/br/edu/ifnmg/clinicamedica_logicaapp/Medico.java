@@ -70,8 +70,17 @@ public class Medico extends Pessoa implements Serializable {
     }
     
     public Medico() {
+        this.id = 0L;
+        this.crm = "";
+        this.especializacao = null;
     }
-
+    
+    public Medico(String nome, String crm, Especialidade especializacao) {
+        this.id = 0L;
+        this.setNome(nome);
+        this.crm = "";
+        this.especializacao = especializacao;
+    }
 
     @Override
     public int hashCode() {

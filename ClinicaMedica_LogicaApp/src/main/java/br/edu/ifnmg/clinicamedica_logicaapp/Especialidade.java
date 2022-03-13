@@ -53,7 +53,13 @@ public class Especialidade implements Serializable {
     }
     
     public Especialidade(){
+        this.id = 0L;
+        this.especializacao = "";
+    }
     
+    public Especialidade(String especializacao){
+        this.id = 0L;
+        this.especializacao = "";
     }
     
     @Override

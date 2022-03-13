@@ -63,7 +63,9 @@ public class Convenio extends Pagamento implements Serializable {
     }
     
     public Convenio(){
-    
+        this.id = 0L;
+        this.nomeConvenio = "";
+        this.valorDesconto = new BigDecimal("0.00");
     }
 
     @Override

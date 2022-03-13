@@ -7,6 +7,7 @@ package br.edu.ifnmg.clinicamedica_logicaapp;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -219,7 +220,7 @@ public class Atendimento implements Serializable {
         this.retornos = retornos;
     }
 
-    public Atendimento(Long id, Date dataAtendimento, Time horaInicio, Time horaFim, AtendimentoSituacoes situacao, TipoAtendimento atendimentoTipo, String motivoCancel, BigDecimal valor, String motivoRetorno, int qtdDiasRetorno, String prescricao) {
+    public Atendimento(Long id, Date dataAtendimento, Time horaInicio, Time horaFim, AtendimentoSituacoes situacao, TipoAtendimento atendimentoTipo, String motivoCancel, BigDecimal valor, String motivoRetorno, int qtdDiasRetorno, String prescricao, Atendimento atendimentoPai, List<Atendimento> retornos, Medico medico, Paciente paciente, Usuario usuario, Especialidade especialidade) {
         this.id = id;
         this.dataAtendimento = dataAtendimento;
         this.horaInicio = horaInicio;
@@ -231,15 +232,31 @@ public class Atendimento implements Serializable {
         this.motivoRetorno = motivoRetorno;
         this.qtdDiasRetorno = qtdDiasRetorno;
         this.prescricao = prescricao;
-        this.atendimentoPai = null;
-        this.medico = null;
-        this.paciente = null;
-        this.usuario = null;
-        this.retornos = null;
+        this.atendimentoPai = atendimentoPai;
+        this.retornos = retornos;
+        this.medico = medico;
+        this.paciente = paciente;
+        this.usuario = usuario;
+        this.especialidade = especialidade;
     }
     
     public Atendimento(){
-    
+        this.id = 0L;
+        this.dataAtendimento = new Date();
+        this.horaInicio = new Time(0L);
+        this.horaFim = new Time(0L);
+        this.situacao = AtendimentoSituacoes.Agendado;
+        this.atendimentoTipo = TipoAtendimento.Consulta;
+        this.motivoCancel = "";
+        this.valor = new BigDecimal("0.00");
+        this.motivoRetorno = "";
+        this.qtdDiasRetorno = 0;
+        this.prescricao = "";
+        this.atendimentoPai = Atendimento.this;
+        this.medico = null;
+        this.paciente = null;
+        this.usuario = null;
+        this.retornos = new ArrayList<>();
     }
 
     @Override

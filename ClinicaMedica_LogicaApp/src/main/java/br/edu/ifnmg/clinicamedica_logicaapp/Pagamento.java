@@ -112,18 +112,24 @@ public class Pagamento implements Serializable {
         this.usuario = usuario;
     }
 
-    public Pagamento(Long id, Date dataPagamento, FormaPagamento pagamento, int qtdParcelas, Date dataVencimento, Usuario usuario){
+    public Pagamento(Long id, Date dataPagamento, FormaPagamento pagamento, int qtdParcelas, Date dataVencimento, Atendimento atendimento, Usuario usuario) {
         this.id = id;
         this.dataPagamento = dataPagamento;
         this.pagamento = pagamento;
         this.qtdParcelas = qtdParcelas;
         this.dataVencimento = dataVencimento;
-        this.atendimento = null;
+        this.atendimento = atendimento;
         this.usuario = usuario;
     }
     
     public Pagamento(){
-    
+        this.id = 0L;
+        this.dataPagamento = new Date();
+        this.pagamento = FormaPagamento.Dinheiro;
+        this.qtdParcelas = 0;
+        this.dataVencimento = new Date();
+        this.atendimento = null;
+        this.usuario = null;
     }
 
     @Override

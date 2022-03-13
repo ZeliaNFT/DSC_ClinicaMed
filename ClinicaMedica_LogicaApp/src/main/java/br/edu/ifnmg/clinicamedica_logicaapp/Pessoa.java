@@ -136,9 +136,6 @@ public class Pessoa implements Serializable {
     public void setTipo(PessoaTipo tipo) {
         this.tipo = tipo;
     }
-    
-    public Pessoa() {
-    }
 
     public Pessoa(Long id, String nome, String cpf, TipoGenero genero, Date dataNascimento, String email, String telefone, String endereco, PessoaTipo tipo) {
         this.id = id;
@@ -149,7 +146,18 @@ public class Pessoa implements Serializable {
         this.email = email;
         this.telefone = telefone;
         this.endereco = endereco;
-        this.tipo = null;
+        this.tipo = tipo;
+    }
+    public Pessoa() {
+        this.id = 0L;
+        this.nome = "";
+        this.cpf = "";
+        this.genero = TipoGenero.Masculino;
+        this.dataNascimento = new Date();
+        this.email = "";
+        this.telefone = "";
+        this.endereco = "";
+        this.tipo = PessoaTipo.Medico;
     }
 
     @Override

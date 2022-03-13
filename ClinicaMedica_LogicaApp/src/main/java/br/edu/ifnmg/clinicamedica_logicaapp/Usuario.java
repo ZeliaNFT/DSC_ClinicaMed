@@ -74,7 +74,17 @@ public class Usuario implements Serializable {
     }
     
     public Usuario(){
+        this.id = 0L;
+        this.login = "";
+        this.senha = "";
+        this.situacao = true;
+    }
     
+    public Usuario(String login, String senha){
+        this.id = 0L;
+        this.login = "";
+        this.senha = "";
+        this.situacao = true;
     }
 
     @Override
