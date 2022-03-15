@@ -131,6 +131,16 @@ public class Pagamento implements Serializable {
         this.atendimento = null;
         this.usuario = null;
     }
+    
+    public Pagamento(Usuario usuario, Atendimento atendimento, FormaPagamento pagamento){
+        this.id = 0L;
+        this.dataPagamento = new Date();
+        this.pagamento = FormaPagamento.Dinheiro;
+        this.qtdParcelas = 0;
+        this.dataVencimento = new Date();
+        this.atendimento = null;
+        this.usuario = null;
+    }
 
     @Override
     public int hashCode() {

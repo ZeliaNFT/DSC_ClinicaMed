@@ -65,25 +65,18 @@ public class Usuario implements Serializable {
     public void setSituacao(boolean situacao) {
         this.situacao = situacao;
     }
-
-    public Usuario(Long id, String login, String senha, boolean situacao) {
-        this.id = id;
-        this.login = login;
-        this.senha = senha;
-        this.situacao = situacao;
+    
+    public Usuario(String login, String senha){
+        this.id = 0L;
+        this.login = " ";
+        this.senha = " ";
+        this.situacao = true;
     }
     
     public Usuario(){
         this.id = 0L;
-        this.login = "";
-        this.senha = "";
-        this.situacao = true;
-    }
-    
-    public Usuario(String login, String senha){
-        this.id = 0L;
-        this.login = "";
-        this.senha = "";
+        this.login = " ";
+        this.senha = " ";
         this.situacao = true;
     }
 
@@ -109,7 +102,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.clinicamedica_logicaapp.Usuario[ id=" + id + " ]";
+        return this.login;
     }
     
 }

@@ -6,7 +6,9 @@ package br.edu.ifnmg.clinicamedica_persistencia;
 
 import br.edu.ifnmg.clinicamedica_logicaapp.Usuario;
 import br.edu.ifnmg.clinicamedica_logicaapp.UsuarioRepositorio;
+import java.util.HashMap;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
@@ -24,8 +26,38 @@ public class UsuarioDAO extends DataAccessObject<Usuario> implements UsuarioRepo
     }
 
     @Override
-    public List<Usuario> Buscar(Usuario filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Usuario> Buscar(Usuario objeto) {
+
+        String jpql = "select user from Usuario user";
+        
+        HashMap<String, Object> parametros = new HashMap<>();
+        
+        if(objeto != null){
+            if(objeto.getLogin() != null & !objeto.getLogin().isEmpty())
+                parametros.put("login", objeto.getLogin());
+            if(objeto.getId() > 0)
+                parametros.put("id", objeto.getId());
+        }
+        
+        if(!parametros.isEmpty()){
+            String filtros = "";
+            jpql += " where ";
+            for(String campo : parametros.keySet()){
+                if(!filtros.isEmpty())
+                    filtros += " and ";
+                jpql += "user." + campo + " = :" + campo;
+            }
+            jpql += filtros;
+        }
+        
+        Query sql = this.manager.createQuery(jpql);
+        
+        if(!parametros.isEmpty())
+            for(String campo : parametros.keySet())
+                sql.setParameter(campo, parametros.get(campo));
+            
+        
+        return sql.getResultList();
     }
     
 }

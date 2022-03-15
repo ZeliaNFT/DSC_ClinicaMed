@@ -16,7 +16,7 @@ import javax.persistence.Persistence;
  */
 public abstract class DataAccessObject<T> implements Repositorio<T>{
     
-    private EntityManager manager;
+    EntityManager manager;
     private Class type;
     
     public DataAccessObject(Class type){
@@ -35,6 +35,7 @@ public abstract class DataAccessObject<T> implements Repositorio<T>{
             return true;
         }catch(Exception ex){
             transacao.rollback();
+            System.out.println(ex);
             return false;
         }
     }

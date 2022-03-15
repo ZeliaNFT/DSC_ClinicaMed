@@ -6,6 +6,7 @@ package br.edu.ifnmg.clinicamedica_persistencia;
 
 import br.edu.ifnmg.clinicamedica_logicaapp.Pessoa;
 import br.edu.ifnmg.clinicamedica_logicaapp.PessoaRepositorio;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -20,7 +21,34 @@ public class PessoaDAO extends DataAccessObject<Pessoa> implements PessoaReposit
 
     @Override
     public List<Pessoa> Buscar(Pessoa objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String jpql = "select a from Pessoa a";
+        
+        String filtros = "";
+        
+        Hashtable<String, Object> parametros = new Hashtable<>();
+        
+        if(objeto.getNome().length() > 0){
+            filtros += "a.nome like :nome"; 
+            parametros.put("nome", objeto.getNome()+"%");
+        }
+        
+        if(objeto.getTipo() != null){
+            if(filtros.length() > 0)
+                filtros += " and ";
+            filtros += "a.tipo = :tipo"; 
+            parametros.put("tipo", objeto.getTipo());
+        }
+        
+        if(filtros.length() > 0)
+            jpql = jpql + " where " + filtros;
+        
+        var query = this.manager.createQuery(jpql);
+        
+        for(String chave : parametros.keySet()){
+            query.setParameter(chave, parametros.get(chave));
+        }
+        
+        return query.getResultList();
     }
     
 }

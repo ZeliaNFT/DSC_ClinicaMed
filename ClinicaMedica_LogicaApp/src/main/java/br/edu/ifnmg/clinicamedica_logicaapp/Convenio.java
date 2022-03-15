@@ -11,6 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,6 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Convenios")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Convenio extends Pagamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,6 +44,10 @@ public class Convenio extends Pagamento implements Serializable {
     
     @Column(name = "valorDesconto", nullable = false)
     private BigDecimal valorDesconto;
+    
+    @OneToOne
+    @JoinColumn(name = "pagamento_fk")
+    private Pagamento convenio;
 
     public String getNomeConvenio() {
         return nomeConvenio;
@@ -56,16 +65,33 @@ public class Convenio extends Pagamento implements Serializable {
         this.valorDesconto = valorDesconto;
     }
 
-    public Convenio(Long id, String nomeConvenio, BigDecimal valorDesconto) {
+    public Pagamento getConvenio() {
+        return convenio;
+    }
+
+    public void setConvenio(Pagamento convenio) {
+        this.convenio = convenio;
+    }
+    
+    public Convenio(Long id, String nomeConvenio, BigDecimal valorDesconto, Pagamento convenio) {
         this.id = id;
         this.nomeConvenio = nomeConvenio;
         this.valorDesconto = valorDesconto;
+        this.convenio = convenio;
     }
     
     public Convenio(){
         this.id = 0L;
         this.nomeConvenio = "";
         this.valorDesconto = new BigDecimal("0.00");
+        this.convenio = null;
+    }
+    
+    public Convenio(Pagamento convenio, String nomeConvenio, String valorDesconto){
+        this.id = 0L;
+        this.nomeConvenio = "";
+        this.valorDesconto = new BigDecimal(valorDesconto);
+        this.convenio = null;
     }
 
     @Override

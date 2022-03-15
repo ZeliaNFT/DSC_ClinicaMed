@@ -6,6 +6,7 @@ package br.edu.ifnmg.clinicamedica_persistencia;
 
 import br.edu.ifnmg.clinicamedica_logicaapp.Medico;
 import br.edu.ifnmg.clinicamedica_logicaapp.MedicoRepositorio;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -20,7 +21,32 @@ public class MedicoDAO extends DataAccessObject<Medico> implements MedicoReposit
 
     @Override
     public List<Medico> Buscar(Medico objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String jpql = "select med from Medico med";
+        
+        String filtros = "";
+        
+        Hashtable<String, Object> parametros = new Hashtable<>();
+        
+        if(objeto.getCrm().length() > 0){
+            filtros += "med.crm like :crm"; 
+            parametros.put("crm", objeto.getCrm()+"%");
+        }
+        
+        if(objeto.getCrm().length() > 0){
+            filtros += "med.especializacao like :especializacao"; 
+            parametros.put("especializacao", objeto.getEspecializacao()+"%");
+        }
+        
+        if(filtros.length() > 0)
+            jpql = jpql + " where " + filtros;
+        
+        var query = this.manager.createQuery(jpql);
+        
+        for(String chave : parametros.keySet()){
+            query.setParameter(chave, parametros.get(chave));
+        }
+        
+        return query.getResultList();
     }
     
 }

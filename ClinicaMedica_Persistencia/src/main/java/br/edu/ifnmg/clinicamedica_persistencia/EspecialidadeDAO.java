@@ -6,6 +6,7 @@ package br.edu.ifnmg.clinicamedica_persistencia;
 
 import br.edu.ifnmg.clinicamedica_logicaapp.Especialidade;
 import br.edu.ifnmg.clinicamedica_logicaapp.EspecialidadeRepositorio;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -20,7 +21,27 @@ public class EspecialidadeDAO extends DataAccessObject<Especialidade> implements
 
     @Override
     public List<Especialidade> Buscar(Especialidade objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String jpql = "select espec from Especialidade espec";
+        
+        String filtros = "";
+        
+        Hashtable<String, Object> parametros = new Hashtable<>();
+        
+        if(objeto.getEspecializacao().length() > 0){
+            filtros += "espec.especializacao like :especializacao"; 
+            parametros.put("especializacao", objeto.getEspecializacao()+"%");
+        }
+        
+        if(filtros.length() > 0)
+            jpql = jpql + " where " + filtros;
+        
+        var query = this.manager.createQuery(jpql);
+        
+        for(String chave : parametros.keySet()){
+            query.setParameter(chave, parametros.get(chave));
+        }
+        
+        return query.getResultList();
     }
     
 }

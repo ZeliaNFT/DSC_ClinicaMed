@@ -159,6 +159,17 @@ public class Pessoa implements Serializable {
         this.endereco = "";
         this.tipo = PessoaTipo.Medico;
     }
+    public Pessoa(String nome) {
+        this.id = 0L;
+        this.nome = "";
+        this.cpf = "";
+        this.genero = TipoGenero.Masculino;
+        this.dataNascimento = new Date();
+        this.email = "";
+        this.telefone = "";
+        this.endereco = "";
+        this.tipo = PessoaTipo.Medico;
+    }
 
     @Override
     public int hashCode() {

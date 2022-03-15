@@ -6,6 +6,7 @@ package br.edu.ifnmg.clinicamedica_persistencia;
 
 import br.edu.ifnmg.clinicamedica_logicaapp.Paciente;
 import br.edu.ifnmg.clinicamedica_logicaapp.PacienteRepositorio;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -20,7 +21,32 @@ public class PacienteDAO extends DataAccessObject<Paciente> implements PacienteR
 
     @Override
     public List<Paciente> Buscar(Paciente objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String jpql = "select pac from Paciente pac";
+        
+        String filtros = "";
+        
+        Hashtable<String, Object> parametros = new Hashtable<>();
+        
+        if(objeto.getNome().length() > 0){
+            filtros += "pac.nome like :nome"; 
+            parametros.put("nome", objeto.getNome()+"%");
+        }
+        
+        if(objeto.getCpf().length() > 0){
+            filtros += "pac.cpf like :cpf"; 
+            parametros.put("cpf", objeto.getCpf()+"%");
+        }
+        
+        if(filtros.length() > 0)
+            jpql = jpql + " where " + filtros;
+        
+        var query = this.manager.createQuery(jpql);
+        
+        for(String chave : parametros.keySet()){
+            query.setParameter(chave, parametros.get(chave));
+        }
+        
+        return query.getResultList();
     }
     
 }

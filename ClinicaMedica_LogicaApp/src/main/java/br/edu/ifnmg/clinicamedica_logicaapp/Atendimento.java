@@ -258,7 +258,26 @@ public class Atendimento implements Serializable {
         this.usuario = null;
         this.retornos = new ArrayList<>();
     }
-
+    
+    public Atendimento(Medico medico, Paciente paciente, Usuario usuario, TipoAtendimento atendimentoTipo){
+        this.id = 0L;
+        this.dataAtendimento = new Date();
+        this.horaInicio = new Time(0L);
+        this.horaFim = new Time(0L);
+        this.situacao = AtendimentoSituacoes.Agendado;
+        this.atendimentoTipo = TipoAtendimento.Consulta;
+        this.motivoCancel = "";
+        this.valor = new BigDecimal("0.00");
+        this.motivoRetorno = "";
+        this.qtdDiasRetorno = 0;
+        this.prescricao = "";
+        this.atendimentoPai = Atendimento.this;
+        this.medico = null;
+        this.paciente = null;
+        this.usuario = null;
+        this.retornos = new ArrayList<>();
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
