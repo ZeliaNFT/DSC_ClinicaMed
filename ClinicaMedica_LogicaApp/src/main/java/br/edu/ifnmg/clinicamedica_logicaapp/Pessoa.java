@@ -35,7 +35,7 @@ public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "nome", length = 500, nullable = false)
@@ -161,7 +161,7 @@ public class Pessoa implements Serializable {
     }
     public Pessoa(String nome) {
         this.id = 0L;
-        this.nome = "";
+        this.nome = nome;
         this.cpf = "";
         this.genero = TipoGenero.Masculino;
         this.dataNascimento = new Date();

@@ -31,7 +31,7 @@ public class Pagamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "dataPagamento", nullable = true)
@@ -138,8 +138,8 @@ public class Pagamento implements Serializable {
         this.pagamento = FormaPagamento.Dinheiro;
         this.qtdParcelas = 0;
         this.dataVencimento = new Date();
-        this.atendimento = null;
-        this.usuario = null;
+        this.atendimento = atendimento;
+        this.usuario = usuario;
     }
 
     @Override

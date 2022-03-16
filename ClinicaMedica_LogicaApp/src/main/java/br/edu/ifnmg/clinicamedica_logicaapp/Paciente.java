@@ -27,7 +27,7 @@ public class Paciente extends Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "historico", length = 500, nullable = false)
@@ -61,7 +61,7 @@ public class Paciente extends Pessoa implements Serializable {
     public Paciente(String nome, String historico){
         this.id = 0L;
         this.setNome(nome);
-        this.historico = "";
+        this.historico = historico;
     }
 
     @Override

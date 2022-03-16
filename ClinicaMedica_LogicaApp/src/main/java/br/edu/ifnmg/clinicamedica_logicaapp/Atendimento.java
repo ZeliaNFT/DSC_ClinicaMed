@@ -34,7 +34,7 @@ public class Atendimento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "dataAtendimento", nullable = true)
@@ -272,9 +272,9 @@ public class Atendimento implements Serializable {
         this.qtdDiasRetorno = 0;
         this.prescricao = "";
         this.atendimentoPai = Atendimento.this;
-        this.medico = null;
-        this.paciente = null;
-        this.usuario = null;
+        this.medico = medico;
+        this.paciente = paciente;
+        this.usuario = usuario;
         this.retornos = new ArrayList<>();
     }
     

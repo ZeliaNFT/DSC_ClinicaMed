@@ -105,6 +105,5 @@ public class Principal {
         for(Pessoa p: repopa.Buscar(new Paciente("Mar", null))){
             System.out.println(p.getNome());
         }
-        
     }
 }

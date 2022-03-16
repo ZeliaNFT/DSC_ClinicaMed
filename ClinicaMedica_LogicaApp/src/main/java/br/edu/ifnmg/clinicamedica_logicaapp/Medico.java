@@ -29,7 +29,7 @@ public class Medico extends Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "crm", length = 500, nullable = false)
@@ -78,7 +78,7 @@ public class Medico extends Pessoa implements Serializable {
     public Medico(String nome, String crm, Especialidade especializacao) {
         this.id = 0L;
         this.setNome(nome);
-        this.crm = "";
+        this.crm = crm;
         this.especializacao = especializacao;
     }
 

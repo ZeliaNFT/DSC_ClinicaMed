@@ -22,7 +22,7 @@ public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name = "login", nullable = false)
@@ -68,8 +68,8 @@ public class Usuario implements Serializable {
     
     public Usuario(String login, String senha){
         this.id = 0L;
-        this.login = " ";
-        this.senha = " ";
+        this.login = login;
+        this.senha = senha;
         this.situacao = true;
     }
     

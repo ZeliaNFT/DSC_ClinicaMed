@@ -14,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,7 +28,7 @@ public class Convenio extends Pagamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public Long getId() {
@@ -45,7 +45,7 @@ public class Convenio extends Pagamento implements Serializable {
     @Column(name = "valorDesconto", nullable = false)
     private BigDecimal valorDesconto;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "pagamento_fk")
     private Pagamento convenio;
 
@@ -89,9 +89,9 @@ public class Convenio extends Pagamento implements Serializable {
     
     public Convenio(Pagamento convenio, String nomeConvenio, String valorDesconto){
         this.id = 0L;
-        this.nomeConvenio = "";
+        this.nomeConvenio = nomeConvenio;
         this.valorDesconto = new BigDecimal(valorDesconto);
-        this.convenio = null;
+        this.convenio = convenio;
     }
 
     @Override
