@@ -22,7 +22,14 @@ public class UsuarioDAO extends DataAccessObject<Usuario> implements UsuarioRepo
 
     @Override
     public boolean autenticar(String login, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Query sql =  this.manager.createQuery("select o from Usuario o where o.login = :login and o.senha = :senha");
+        sql.setParameter("login", login);
+        sql.setParameter("senha", senha);
+        
+        if(sql.getResultList().size() > 0)
+            return true;
+        
+        return false;
     }
 
     @Override

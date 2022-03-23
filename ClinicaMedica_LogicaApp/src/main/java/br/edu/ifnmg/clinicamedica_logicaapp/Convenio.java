@@ -44,10 +44,6 @@ public class Convenio extends Pagamento implements Serializable {
     
     @Column(name = "valorDesconto", nullable = false)
     private BigDecimal valorDesconto;
-    
-    @ManyToOne
-    @JoinColumn(name = "pagamento_fk")
-    private Pagamento convenio;
 
     public String getNomeConvenio() {
         return nomeConvenio;
@@ -64,34 +60,23 @@ public class Convenio extends Pagamento implements Serializable {
     public void setValorDesconto(BigDecimal valorDesconto) {
         this.valorDesconto = valorDesconto;
     }
-
-    public Pagamento getConvenio() {
-        return convenio;
-    }
-
-    public void setConvenio(Pagamento convenio) {
-        this.convenio = convenio;
-    }
     
-    public Convenio(Long id, String nomeConvenio, BigDecimal valorDesconto, Pagamento convenio) {
+    public Convenio(Long id, String nomeConvenio, BigDecimal valorDesconto) {
         this.id = id;
         this.nomeConvenio = nomeConvenio;
         this.valorDesconto = valorDesconto;
-        this.convenio = convenio;
     }
     
     public Convenio(){
         this.id = 0L;
         this.nomeConvenio = "";
         this.valorDesconto = new BigDecimal("0.00");
-        this.convenio = null;
     }
     
-    public Convenio(Pagamento convenio, String nomeConvenio, String valorDesconto){
+    public Convenio(String nomeConvenio, String valorDesconto){
         this.id = 0L;
         this.nomeConvenio = nomeConvenio;
         this.valorDesconto = new BigDecimal(valorDesconto);
-        this.convenio = convenio;
     }
 
     @Override

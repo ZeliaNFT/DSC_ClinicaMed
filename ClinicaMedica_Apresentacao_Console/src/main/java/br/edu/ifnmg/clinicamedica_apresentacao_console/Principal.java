@@ -86,17 +86,19 @@ public class Principal {
         var atend2 = repoa.Abrir(2L);
         var atend3 = repoa.Abrir(3L);
         
+        ConvenioRepositorio repoc = new ConvenioDAO();
+        repoc.Salvar(new Convenio("MedCenter", "50"));
+        
+        var conv1 = repoc.Abrir(1L);
+        
         PagamentoRepositorio repopa = new PagamentoDAO();
-        repopa.Salvar(new Pagamento(user1, atend1, FormaPagamento.Dinheiro));
+        repopa.Salvar(new Pagamento(user1, atend1, FormaPagamento.Dinheiro, conv1));
         repopa.Salvar(new Pagamento(user1, atend2, FormaPagamento.Pix));
         repopa.Salvar(new Pagamento(user2, atend3, FormaPagamento.Convenio));
         
         var pag1 = repopa.Abrir(1L);
         var pag2 = repopa.Abrir(2L);
         var pag3 = repopa.Abrir(3L);
-        
-        ConvenioRepositorio repoc = new ConvenioDAO();
-        repoc.Salvar(new Convenio(pag3, "MedCenter", "50"));
         
     }
     public static void main(String[] args){

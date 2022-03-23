@@ -56,6 +56,10 @@ public class Pagamento implements Serializable {
     @JoinColumn(name = "usuario_fk")
     private Usuario usuario;
     
+    @ManyToOne
+    @JoinColumn(name = "convenio_fk")
+    private Convenio convenio;
+    
     public Long getId() {
         return id;
     }
@@ -112,7 +116,15 @@ public class Pagamento implements Serializable {
         this.usuario = usuario;
     }
 
-    public Pagamento(Long id, Date dataPagamento, FormaPagamento pagamento, int qtdParcelas, Date dataVencimento, Atendimento atendimento, Usuario usuario) {
+    public Convenio getConvenio() {
+        return convenio;
+    }
+
+    public void setConvenio(Convenio convenio) {
+        this.convenio = convenio;
+    }
+
+    public Pagamento(Long id, Date dataPagamento, FormaPagamento pagamento, int qtdParcelas, Date dataVencimento, Atendimento atendimento, Usuario usuario, Convenio convenio) {
         this.id = id;
         this.dataPagamento = dataPagamento;
         this.pagamento = pagamento;
@@ -120,6 +132,7 @@ public class Pagamento implements Serializable {
         this.dataVencimento = dataVencimento;
         this.atendimento = atendimento;
         this.usuario = usuario;
+        this.convenio = convenio;
     }
     
     public Pagamento(){
@@ -130,6 +143,18 @@ public class Pagamento implements Serializable {
         this.dataVencimento = new Date();
         this.atendimento = null;
         this.usuario = null;
+        this.convenio = null;
+    }
+    
+    public Pagamento(Usuario usuario, Atendimento atendimento, FormaPagamento pagamento, Convenio convenio){
+        this.id = 0L;
+        this.dataPagamento = new Date();
+        this.pagamento = FormaPagamento.Dinheiro;
+        this.qtdParcelas = 0;
+        this.dataVencimento = new Date();
+        this.atendimento = atendimento;
+        this.usuario = usuario;
+        this.convenio = convenio;
     }
     
     public Pagamento(Usuario usuario, Atendimento atendimento, FormaPagamento pagamento){
@@ -140,6 +165,7 @@ public class Pagamento implements Serializable {
         this.dataVencimento = new Date();
         this.atendimento = atendimento;
         this.usuario = usuario;
+        this.convenio = convenio;
     }
 
     @Override
