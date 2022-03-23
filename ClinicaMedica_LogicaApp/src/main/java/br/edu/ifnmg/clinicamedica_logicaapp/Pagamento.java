@@ -13,8 +13,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -26,7 +24,6 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "Pagamentos")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Pagamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,7 +56,7 @@ public class Pagamento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "convenio_fk")
     private Convenio convenio;
-    
+
     public Long getId() {
         return id;
     }
@@ -123,6 +120,17 @@ public class Pagamento implements Serializable {
     public void setConvenio(Convenio convenio) {
         this.convenio = convenio;
     }
+    
+     public Pagamento() {
+        this.id = 0L;
+        this.dataPagamento = new Date();
+        this.pagamento = FormaPagamento.Dinheiro;
+        this.qtdParcelas = 0;
+        this.dataVencimento = new Date();
+        this.atendimento = null;
+        this.usuario = null;
+        this.convenio = null;
+    }
 
     public Pagamento(Long id, Date dataPagamento, FormaPagamento pagamento, int qtdParcelas, Date dataVencimento, Atendimento atendimento, Usuario usuario, Convenio convenio) {
         this.id = id;
@@ -135,21 +143,10 @@ public class Pagamento implements Serializable {
         this.convenio = convenio;
     }
     
-    public Pagamento(){
-        this.id = 0L;
-        this.dataPagamento = new Date();
-        this.pagamento = FormaPagamento.Dinheiro;
-        this.qtdParcelas = 0;
-        this.dataVencimento = new Date();
-        this.atendimento = null;
-        this.usuario = null;
-        this.convenio = null;
-    }
-    
     public Pagamento(Usuario usuario, Atendimento atendimento, FormaPagamento pagamento, Convenio convenio){
         this.id = 0L;
         this.dataPagamento = new Date();
-        this.pagamento = FormaPagamento.Dinheiro;
+        this.pagamento = pagamento;
         this.qtdParcelas = 0;
         this.dataVencimento = new Date();
         this.atendimento = atendimento;
@@ -160,12 +157,11 @@ public class Pagamento implements Serializable {
     public Pagamento(Usuario usuario, Atendimento atendimento, FormaPagamento pagamento){
         this.id = 0L;
         this.dataPagamento = new Date();
-        this.pagamento = FormaPagamento.Dinheiro;
+        this.pagamento = pagamento;
         this.qtdParcelas = 0;
         this.dataVencimento = new Date();
         this.atendimento = atendimento;
         this.usuario = usuario;
-        this.convenio = convenio;
     }
 
     @Override

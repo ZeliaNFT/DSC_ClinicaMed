@@ -18,7 +18,6 @@ import br.edu.ifnmg.clinicamedica_logicaapp.PacienteRepositorio;
 import br.edu.ifnmg.clinicamedica_logicaapp.Pagamento;
 import br.edu.ifnmg.clinicamedica_logicaapp.PagamentoRepositorio;
 import br.edu.ifnmg.clinicamedica_logicaapp.Pessoa;
-import br.edu.ifnmg.clinicamedica_logicaapp.PessoaRepositorio;
 import br.edu.ifnmg.clinicamedica_logicaapp.TipoAtendimento;
 import br.edu.ifnmg.clinicamedica_logicaapp.Usuario;
 import br.edu.ifnmg.clinicamedica_logicaapp.UsuarioRepositorio;
@@ -28,7 +27,6 @@ import br.edu.ifnmg.clinicamedica_persistencia.EspecialidadeDAO;
 import br.edu.ifnmg.clinicamedica_persistencia.MedicoDAO;
 import br.edu.ifnmg.clinicamedica_persistencia.PacienteDAO;
 import br.edu.ifnmg.clinicamedica_persistencia.PagamentoDAO;
-import br.edu.ifnmg.clinicamedica_persistencia.PessoaDAO;
 import br.edu.ifnmg.clinicamedica_persistencia.UsuarioDAO;
 
 /**
@@ -92,9 +90,9 @@ public class Principal {
         var conv1 = repoc.Abrir(1L);
         
         PagamentoRepositorio repopa = new PagamentoDAO();
-        repopa.Salvar(new Pagamento(user1, atend1, FormaPagamento.Dinheiro, conv1));
+        repopa.Salvar(new Pagamento(user1, atend1, FormaPagamento.Dinheiro));
         repopa.Salvar(new Pagamento(user1, atend2, FormaPagamento.Pix));
-        repopa.Salvar(new Pagamento(user2, atend3, FormaPagamento.Convenio));
+        repopa.Salvar(new Pagamento(user2, atend3, FormaPagamento.Convenio, conv1));
         
         var pag1 = repopa.Abrir(1L);
         var pag2 = repopa.Abrir(2L);

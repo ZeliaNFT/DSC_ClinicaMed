@@ -265,7 +265,7 @@ public class Atendimento implements Serializable {
         this.horaInicio = new Time(0L);
         this.horaFim = new Time(0L);
         this.situacao = AtendimentoSituacoes.Agendado;
-        this.atendimentoTipo = TipoAtendimento.Consulta;
+        this.atendimentoTipo = atendimentoTipo;
         this.motivoCancel = "";
         this.valor = new BigDecimal("0.00");
         this.motivoRetorno = "";
