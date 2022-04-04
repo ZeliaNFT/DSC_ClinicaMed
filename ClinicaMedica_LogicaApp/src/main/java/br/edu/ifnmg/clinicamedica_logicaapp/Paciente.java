@@ -33,14 +33,6 @@ public class Paciente extends Pessoa implements Serializable {
     @Column(name = "historico", length = 500, nullable = false)
     private String historico;
     
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getHistorico() {
         return historico;
     }
@@ -48,20 +40,23 @@ public class Paciente extends Pessoa implements Serializable {
     public void setHistorico(String historico) {
         this.historico = historico;
     }
-
-    public Paciente(Long id, String historico) {
-        this.id = id;
-        this.historico = historico;
-    }
     
     public Paciente(){
         this.id = 0L;
         this.historico = "";
     }
-    public Paciente(String nome, String historico){
-        this.id = 0L;
+    public Paciente(TipoGenero genero, String nome, String cpf, String email, String telefone, String endereco, String historico){
+        this.setGenero(genero);
         this.setNome(nome);
+        this.setCpf(cpf);
+        this.setEmail(email);
+        this.setTelefone(telefone);
+        this.setEndereco(endereco);
         this.historico = historico;
+    }
+    
+    public Paciente(String nome){
+        this.setNome(nome);
     }
 
     @Override

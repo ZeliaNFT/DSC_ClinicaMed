@@ -5,6 +5,7 @@
 package br.edu.ifnmg.clinicamedica_logicaapp;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -39,14 +40,6 @@ public class Medico extends Pessoa implements Serializable {
     @JoinColumn(name = "especializacao_fk")
     private Especialidade especializacao;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getCrm() {
         return crm;
     }
@@ -63,8 +56,13 @@ public class Medico extends Pessoa implements Serializable {
         this.especializacao = especializacao;
     }
 
-    public Medico(Long id, String crm, Especialidade especializacao) {
-        this.id = id;
+    public Medico(TipoGenero genero, String nome, String cpf, String email, String telefone, String endereco, String crm, Especialidade especializacao) {
+        this.setGenero(genero);
+        this.setNome(nome);
+        this.setCpf(cpf);
+        this.setEmail(email);
+        this.setTelefone(telefone);
+        this.setEndereco(endereco);
         this.crm = crm;
         this.especializacao = especializacao;
     }
@@ -73,13 +71,6 @@ public class Medico extends Pessoa implements Serializable {
         this.id = 0L;
         this.crm = "";
         this.especializacao = null;
-    }
-    
-    public Medico(String nome, String crm, Especialidade especializacao) {
-        this.id = 0L;
-        this.setNome(nome);
-        this.crm = crm;
-        this.especializacao = especializacao;
     }
 
     @Override

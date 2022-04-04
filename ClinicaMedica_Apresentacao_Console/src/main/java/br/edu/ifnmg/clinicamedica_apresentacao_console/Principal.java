@@ -19,6 +19,7 @@ import br.edu.ifnmg.clinicamedica_logicaapp.Pagamento;
 import br.edu.ifnmg.clinicamedica_logicaapp.PagamentoRepositorio;
 import br.edu.ifnmg.clinicamedica_logicaapp.Pessoa;
 import br.edu.ifnmg.clinicamedica_logicaapp.TipoAtendimento;
+import br.edu.ifnmg.clinicamedica_logicaapp.TipoGenero;
 import br.edu.ifnmg.clinicamedica_logicaapp.Usuario;
 import br.edu.ifnmg.clinicamedica_logicaapp.UsuarioRepositorio;
 import br.edu.ifnmg.clinicamedica_persistencia.AtendimentoDAO;
@@ -28,6 +29,7 @@ import br.edu.ifnmg.clinicamedica_persistencia.MedicoDAO;
 import br.edu.ifnmg.clinicamedica_persistencia.PacienteDAO;
 import br.edu.ifnmg.clinicamedica_persistencia.PagamentoDAO;
 import br.edu.ifnmg.clinicamedica_persistencia.UsuarioDAO;
+import java.util.Date;
 
 /**
  *
@@ -58,18 +60,18 @@ public class Principal {
         var espec3 = repoe.Abrir(3L);
         
         MedicoRepositorio repom = new MedicoDAO();
-        repom.Salvar(new Medico("João","crmteste1", espec1));
-        repom.Salvar(new Medico("José","crmteste2", espec2));
-        repom.Salvar(new Medico("Joana","crmteste3", espec3));
+        repom.Salvar(new Medico(TipoGenero.Masculino,"João","111","joao@mail.com","999","Rua 1","crmteste1", espec1));
+        repom.Salvar(new Medico(TipoGenero.Masculino,"José","222","jose@mail.com","888","Rua 2","crmteste2", espec2));
+        repom.Salvar(new Medico(TipoGenero.Feminino,"Joana","333","joana@mail.com","777","Rua 3","crmteste3", espec3));
         
         var med1 = repom.Abrir(1L);
         var med2 = repom.Abrir(2L);
         var med3 = repom.Abrir(3L);
         
         PacienteRepositorio repop = new PacienteDAO();
-        repop.Salvar(new Paciente("Marcos","Glicose alta"));
-        repop.Salvar(new Paciente("Maria","Colesterol alto"));
-        repop.Salvar(new Paciente("Matheus","Hipertensão"));
+        repop.Salvar(new Paciente(TipoGenero.Masculino,"Marcos","444","marcos@mail.com","666","Rua 4","Glicose alta"));
+        repop.Salvar(new Paciente(TipoGenero.Feminino,"Maria","555","maria@mail.com","555","Rua 5","Colesterol alto"));
+        repop.Salvar(new Paciente(TipoGenero.Masculino,"Matheus","666","matheus@mail.com","444","Rua 6","Hipertensão"));
         
         var pac1 = repop.Abrir(4L);
         var pac2 = repop.Abrir(5L);
@@ -102,7 +104,7 @@ public class Principal {
     public static void main(String[] args){
         criarBase();
         PacienteRepositorio repopa = new PacienteDAO();
-        for(Pessoa p: repopa.Buscar(new Paciente("Mar", null))){
+        for(Pessoa p: repopa.Buscar(new Paciente("Mar"))){
             System.out.println(p.getNome());
         }
     }

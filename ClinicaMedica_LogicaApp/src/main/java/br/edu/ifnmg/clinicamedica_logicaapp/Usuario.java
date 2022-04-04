@@ -75,8 +75,8 @@ public class Usuario implements Serializable {
     
     public Usuario(){
         this.id = 0L;
-        this.login = " ";
-        this.senha = " ";
+        this.login = "";
+        this.senha = "";
         this.situacao = true;
     }
 

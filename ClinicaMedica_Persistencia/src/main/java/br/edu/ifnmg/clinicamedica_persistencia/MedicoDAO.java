@@ -32,11 +32,6 @@ public class MedicoDAO extends DataAccessObject<Medico> implements MedicoReposit
             parametros.put("crm", objeto.getCrm()+"%");
         }
         
-        if(objeto.getCrm().length() > 0){
-            filtros += "med.especializacao like :especializacao"; 
-            parametros.put("especializacao", objeto.getEspecializacao()+"%");
-        }
-        
         if(filtros.length() > 0)
             jpql = jpql + " where " + filtros;
         
