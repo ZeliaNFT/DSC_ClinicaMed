@@ -32,11 +32,6 @@ public class PacienteDAO extends DataAccessObject<Paciente> implements PacienteR
             parametros.put("nome", objeto.getNome()+"%");
         }
         
-        if(objeto.getCpf().length() > 0){
-            filtros += "pac.cpf like :cpf"; 
-            parametros.put("cpf", objeto.getCpf()+"%");
-        }
-        
         if(filtros.length() > 0)
             jpql = jpql + " where " + filtros;
         

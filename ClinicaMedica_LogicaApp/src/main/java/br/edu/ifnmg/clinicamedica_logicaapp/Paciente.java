@@ -42,6 +42,12 @@ public class Paciente extends Pessoa implements Serializable {
     }
     
     public Paciente(){
+        this.getGenero();
+        this.getNome();
+        this.getCpf();
+        this.getEmail();
+        this.getTelefone();
+        this.getEndereco();
         this.id = 0L;
         this.historico = "";
     }

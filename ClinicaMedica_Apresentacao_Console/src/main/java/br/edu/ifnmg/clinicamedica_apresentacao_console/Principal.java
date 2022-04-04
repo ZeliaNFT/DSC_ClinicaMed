@@ -41,7 +41,7 @@ public class Principal {
      * @param args the command line arguments
      */
     
-    public static void criarBase(){
+    /*public static void criarBase(){
         
         UsuarioRepositorio repou = new UsuarioDAO();
         repou.Salvar(new Usuario("Medico", "12345"));
@@ -100,11 +100,11 @@ public class Principal {
         var pag2 = repopa.Abrir(2L);
         var pag3 = repopa.Abrir(3L);
         
-    }
+    }*/
     public static void main(String[] args){
-        criarBase();
+        //criarBase();
         PacienteRepositorio repopa = new PacienteDAO();
-        for(Pessoa p: repopa.Buscar(new Paciente("Mar"))){
+        for(Pessoa p: repopa.Buscar(new Paciente("Jos"))){
             System.out.println(p.getNome());
         }
     }
