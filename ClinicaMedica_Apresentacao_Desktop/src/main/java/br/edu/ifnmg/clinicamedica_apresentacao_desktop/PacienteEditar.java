@@ -4,19 +4,55 @@
  */
 package br.edu.ifnmg.clinicamedica_apresentacao_desktop;
 
+import br.edu.ifnmg.clinicamedica_logicaapp.Paciente;
+import br.edu.ifnmg.clinicamedica_logicaapp.PacienteRepositorio;
+import br.edu.ifnmg.clinicamedica_logicaapp.RepositorioFactory;
+import br.edu.ifnmg.clinicamedica_logicaapp.TipoGenero;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alexs
  */
 public class PacienteEditar extends javax.swing.JInternalFrame {
-
+    
+    PacienteRepositorio repositorio;
+    Paciente paciente;
     /**
      * Creates new form PacienteEditar
      */
-    public PacienteEditar() {
+    public PacienteEditar(Paciente u) {
+        this.paciente = u;
+        repositorio = RepositorioFactory.getPacienteRepositorio();
         initComponents();
+        this.setComponentes();
+        for(TipoGenero tipo : TipoGenero.values()) {
+            cbGenero.addItem(tipo.toString());
+        }
     }
-
+    
+    public void setComponentes(){
+        this.lblId.setText(this.paciente.getId().toString());
+        this.txtNome.setText(this.paciente.getNome());
+        this.cbGenero.setSelectedItem(this.paciente.getGenero());
+        this.txtCPF.setText(this.paciente.getCpf());
+        this.txtHistorico.setText(this.paciente.getHistorico());
+        this.txtEndereco.setText(this.paciente.getEndereco());
+        this.txtTelefone.setText(this.paciente.getTelefone());
+        this.dtDataNascimento.setDate(this.paciente.getDataNascimento());
+        this.txtEmail.setText(this.paciente.getEmail());
+    }
+    
+    public void getComponentes(){
+        this.paciente.setNome(this.txtNome.getText());
+        this.paciente.setGenero(TipoGenero.valueOf(cbGenero.getSelectedItem().toString()));
+        this.paciente.setCpf(this.txtCPF.getText());
+        this.paciente.setHistorico(this.txtHistorico.getText());
+        this.paciente.setEndereco(this.txtEndereco.getText());
+        this.paciente.setTelefone(this.txtTelefone.getText());
+        this.paciente.setDataNascimento(this.dtDataNascimento.getDate());
+        this.paciente.setEmail(this.txtEmail.getText());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +73,6 @@ public class PacienteEditar extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtHistorico = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
-        txtDataNasc = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -47,6 +82,7 @@ public class PacienteEditar extends javax.swing.JInternalFrame {
         btnSalvar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        dtDataNascimento = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setTitle("Cadastrar Paciente");
@@ -72,10 +108,25 @@ public class PacienteEditar extends javax.swing.JInternalFrame {
         lblId.setText("0");
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnRemover.setText("Remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,13 +164,13 @@ public class PacienteEditar extends javax.swing.JInternalFrame {
                                 .addComponent(btnRemover)
                                 .addGap(108, 108, 108)
                                 .addComponent(btnCancelar))
-                            .addComponent(txtDataNasc)
                             .addComponent(txtHistorico)
                             .addComponent(txtTelefone, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtEmail)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtEmail))))
+                            .addComponent(dtDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(113, 113, 113))
         );
         layout.setVerticalGroup(
@@ -154,10 +205,10 @@ public class PacienteEditar extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                    .addComponent(dtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -166,11 +217,50 @@ public class PacienteEditar extends javax.swing.JInternalFrame {
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar)
                     .addComponent(btnRemover))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(this, "Deseja realmente salvar os dados do paciente?", "Confirmação", JOptionPane.YES_NO_OPTION)
+                == JOptionPane.YES_OPTION){
+            this.getComponentes();
+            if(repositorio.Salvar(this.paciente)){
+                JOptionPane.showMessageDialog(this, "Dados salvos com sucesso!","Informação", JOptionPane.INFORMATION_MESSAGE);
+                this.setComponentes();
+            } else {
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao salvar os dados. Por favor entre em contato com o administrador!","Erro!", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Operação cancelada!","Informação", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o paciente atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
+                == JOptionPane.YES_OPTION){
+            if(repositorio.Apagar(this.paciente)){
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja finalizar sem alteração? ", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if(resposta == JOptionPane.YES_OPTION){
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -178,6 +268,7 @@ public class PacienteEditar extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbGenero;
+    private com.toedter.calendar.JDateChooser dtDataNascimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -189,7 +280,6 @@ public class PacienteEditar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblId;
     private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtDataNasc;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtHistorico;

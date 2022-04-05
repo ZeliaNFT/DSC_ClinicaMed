@@ -8,6 +8,7 @@ import br.edu.ifnmg.clinicamedica_logicaapp.Medico;
 import br.edu.ifnmg.clinicamedica_logicaapp.MedicoRepositorio;
 import br.edu.ifnmg.clinicamedica_logicaapp.RepositorioFactory;
 import br.edu.ifnmg.clinicamedica_logicaapp.TipoGenero;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,7 +35,7 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
     public void setComponentes(){
         this.lblId.setText(this.medico.getId().toString());
         this.txtNome.setText(this.medico.getNome());
-        this.cbGenero.setSelectedItem(this.medico.getGenero().toString());
+        this.cbGenero.setSelectedItem(this.medico.getGenero());
         this.txtCPF.setText(this.medico.getCpf());
         this.txtEndereco.setText(this.medico.getEndereco());
         this.txtCRM.setText(this.medico.getCrm());
@@ -122,8 +123,18 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
         });
 
         btnRemover.setText("Remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,7 +235,42 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(this, "Deseja realmente salvar os dados do médico?", "Confirmação", JOptionPane.YES_NO_OPTION)
+                == JOptionPane.YES_OPTION){
+            //this.getComponentes();
+            if(repositorio.Salvar(this.medico)){
+                JOptionPane.showMessageDialog(this, "Dados salvos com sucesso!","Informação", JOptionPane.INFORMATION_MESSAGE);
+                this.setComponentes();
+            } else {
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao salvar os dados. Por favor entre em contato com o administrador!","Erro!", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Operação cancelada!","Informação", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o médico atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
+                == JOptionPane.YES_OPTION){
+            if(repositorio.Apagar(this.medico)){
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!", 
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja finalizar sem alteração? ", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if(resposta == JOptionPane.YES_OPTION){
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
