@@ -44,6 +44,8 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        setBackground(new java.awt.Color(153, 0, 0));
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setResizable(false);
 
         lblLogin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -52,6 +54,7 @@ public class Login extends javax.swing.JFrame {
         lblSenha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblSenha.setText("Senha:");
 
+        btnCancelar.setBackground(new java.awt.Color(255, 153, 153));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +62,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        btnLogin.setBackground(new java.awt.Color(204, 255, 204));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -38,7 +38,7 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
         this.txtCPF.setText(this.medico.getCpf());
         this.txtEndereco.setText(this.medico.getEndereco());
         this.txtCRM.setText(this.medico.getCrm());
-        this.txtEspecialidade.setText(this.medico.getEspecializacao().getEspecializacao());
+        this.cbEspecialidade.setSelectedItem(this.medico.getEspecializacao().getEspecializacao());
         this.txtTelefone.setText(this.medico.getTelefone());
         this.dtDataNascimento.setDate(this.medico.getDataNascimento());
         this.txtEmail.setText(this.medico.getEmail());
@@ -79,7 +79,6 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
         txtCPF = new javax.swing.JTextField();
         txtEndereco = new javax.swing.JTextField();
         txtCRM = new javax.swing.JTextField();
-        txtEspecialidade = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         lblId = new javax.swing.JLabel();
@@ -88,6 +87,7 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
         btnRemover = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         dtDataNascimento = new com.toedter.calendar.JDateChooser();
+        cbEspecialidade = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Cadastrar Médico");
@@ -148,7 +148,6 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
                     .addComponent(txtCPF)
                     .addComponent(txtEndereco)
                     .addComponent(txtCRM)
-                    .addComponent(txtEspecialidade)
                     .addComponent(txtTelefone)
                     .addComponent(cbGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -162,7 +161,8 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(cbEspecialidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -195,7 +195,7 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -214,7 +214,7 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
                     .addComponent(btnSalvar)
                     .addComponent(btnRemover)
                     .addComponent(btnCancelar))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -224,7 +224,6 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        TipoGenero.valueOf(cbGenero.getSelectedItem().toString());
     }//GEN-LAST:event_btnSalvarActionPerformed
 
 
@@ -232,6 +231,7 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cbEspecialidade;
     private javax.swing.JComboBox<String> cbGenero;
     private com.toedter.calendar.JDateChooser dtDataNascimento;
     private javax.swing.JLabel jLabel1;
@@ -249,7 +249,6 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCRM;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
-    private javax.swing.JTextField txtEspecialidade;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables

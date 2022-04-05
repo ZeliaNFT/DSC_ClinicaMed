@@ -26,6 +26,11 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        icoMedico = new javax.swing.JLabel();
+        icoPaciente = new javax.swing.JLabel();
+        icoAgenda = new javax.swing.JLabel();
+        icoUsuario = new javax.swing.JLabel();
+        icoPagamento = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -38,7 +43,42 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clinica Medica");
-        setPreferredSize(new java.awt.Dimension(1366, 768));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+
+        icoMedico.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\Webp.net-resizeimage (1).png")); // NOI18N
+        icoMedico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icoMedicoMouseClicked(evt);
+            }
+        });
+
+        icoPaciente.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\Webp.net-resizeimage (5).png")); // NOI18N
+        icoPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icoPacienteMouseClicked(evt);
+            }
+        });
+
+        icoAgenda.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\Webp.net-resizeimage (3).png")); // NOI18N
+        icoAgenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icoAgendaMouseClicked(evt);
+            }
+        });
+
+        icoUsuario.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\Webp.net-resizeimage (8).png")); // NOI18N
+        icoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icoUsuarioMouseClicked(evt);
+            }
+        });
+
+        icoPagamento.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\Webp.net-resizeimage (4).png")); // NOI18N
+        icoPagamento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icoPagamentoMouseClicked(evt);
+            }
+        });
 
         jMenu1.setText("Clinica");
         jMenuBar1.add(jMenu1);
@@ -96,11 +136,30 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2561, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(icoMedico)
+                .addGap(18, 18, 18)
+                .addComponent(icoPaciente)
+                .addGap(18, 18, 18)
+                .addComponent(icoAgenda)
+                .addGap(18, 18, 18)
+                .addComponent(icoPagamento)
+                .addGap(18, 18, 18)
+                .addComponent(icoUsuario)
+                .addContainerGap(1710, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(icoUsuario)
+                    .addComponent(icoPaciente)
+                    .addComponent(icoMedico)
+                    .addComponent(icoAgenda)
+                    .addComponent(icoPagamento))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,6 +200,41 @@ public class Principal extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void icoMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoMedicoMouseClicked
+        // TODO add your handling code here:
+        MedicoBuscar tela = new MedicoBuscar();
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_icoMedicoMouseClicked
+
+    private void icoPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoPacienteMouseClicked
+        // TODO add your handling code here:
+        PacienteBuscar tela = new PacienteBuscar();
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_icoPacienteMouseClicked
+
+    private void icoAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoAgendaMouseClicked
+        // TODO add your handling code here:
+        Atendimento tela = new Atendimento();
+        tela.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_icoAgendaMouseClicked
+
+    private void icoPagamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoPagamentoMouseClicked
+        // TODO add your handling code here:
+        Pagamento tela = new Pagamento();
+        tela.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_icoPagamentoMouseClicked
+
+    private void icoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoUsuarioMouseClicked
+        // TODO add your handling code here:
+        UsuarioBuscar tela = new UsuarioBuscar();
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_icoUsuarioMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -177,6 +271,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel icoAgenda;
+    private javax.swing.JLabel icoMedico;
+    private javax.swing.JLabel icoPaciente;
+    private javax.swing.JLabel icoPagamento;
+    private javax.swing.JLabel icoUsuario;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

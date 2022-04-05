@@ -68,7 +68,6 @@ public class Medico extends Pessoa implements Serializable {
     }
     
     public Medico() {
-        this.id = 0L;
         this.getGenero();
         this.getNome();
         this.getCpf();

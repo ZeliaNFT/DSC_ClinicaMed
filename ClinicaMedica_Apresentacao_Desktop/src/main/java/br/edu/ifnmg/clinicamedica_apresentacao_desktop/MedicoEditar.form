@@ -46,7 +46,6 @@
                   <Component id="txtCPF" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtEndereco" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtCRM" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtEspecialidade" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtTelefone" max="32767" attributes="0"/>
                   <Component id="cbGenero" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
@@ -64,6 +63,7 @@
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="cbEspecialidade" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -105,7 +105,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtEspecialidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbEspecialidade" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -130,7 +130,7 @@
                   <Component id="btnRemover" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -194,8 +194,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCRM">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtEspecialidade">
-    </Component>
     <Component class="javax.swing.JTextField" name="txtTelefone">
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
@@ -229,6 +227,16 @@
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="dtDataNascimento">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbEspecialidade">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

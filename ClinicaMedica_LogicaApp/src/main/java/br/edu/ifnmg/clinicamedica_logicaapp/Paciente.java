@@ -48,7 +48,6 @@ public class Paciente extends Pessoa implements Serializable {
         this.getEmail();
         this.getTelefone();
         this.getEndereco();
-        this.id = 0L;
         this.historico = "";
     }
     public Paciente(TipoGenero genero, String nome, String cpf, String email, String telefone, String endereco, String historico){
