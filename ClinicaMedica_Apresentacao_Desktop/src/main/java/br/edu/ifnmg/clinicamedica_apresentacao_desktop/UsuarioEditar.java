@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.edu.ifnmg.clinicamedica_apresentacao_desktop;
 
@@ -13,19 +13,23 @@ import javax.swing.JOptionPane;
  *
  * @author alexs
  */
-public class UsuarioEditar extends javax.swing.JInternalFrame {
+public class UsuarioEditar extends javax.swing.JFrame {
     
     UsuarioRepositorio repositorio;
     Usuario usuario;
 
     /**
-     * Creates new form UsuarioEditar
+     * Creates new form UsuarioAlterar
      */
     public UsuarioEditar(Usuario u) {
         this.usuario = u;
         repositorio = RepositorioFactory.getUsuarioRepositorio();
         initComponents();
         this.setComponentes();
+    }
+
+    private UsuarioEditar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public void setComponentes(){
@@ -38,6 +42,7 @@ public class UsuarioEditar extends javax.swing.JInternalFrame {
         this.usuario.setLogin(this.txtLogin.getText());
         this.usuario.setSenha(String.valueOf(txtSenha.getPassword()));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,26 +53,27 @@ public class UsuarioEditar extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         txtLogin = new javax.swing.JTextField();
-        btnSalvar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setClosable(true);
-        setTitle("Buscar Usuario");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 300));
 
         jLabel1.setText("ID:");
+
+        lblId.setText("0");
 
         jLabel2.setText("Login:");
 
         jLabel3.setText("Senha:");
 
-        lblId.setText("0");
-
+        btnSalvar.setBackground(new java.awt.Color(204, 255, 204));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +81,7 @@ public class UsuarioEditar extends javax.swing.JInternalFrame {
             }
         });
 
+        btnRemover.setBackground(new java.awt.Color(255, 204, 102));
         btnRemover.setText("Remover");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +89,7 @@ public class UsuarioEditar extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(255, 153, 153));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,11 +116,11 @@ public class UsuarioEditar extends javax.swing.JInternalFrame {
                         .addComponent(lblId)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSalvar)
-                        .addGap(49, 49, 49)
-                        .addComponent(btnRemover)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(btnCancelar)))
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(86, 86, 86)
+                        .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(100, 100, 100)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -132,10 +140,10 @@ public class UsuarioEditar extends javax.swing.JInternalFrame {
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnRemover)
-                    .addComponent(btnCancelar))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,30 +152,36 @@ public class UsuarioEditar extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
         if(JOptionPane.showConfirmDialog(this, "Deseja realmente salvar os dados do usuário", "Confirmação", JOptionPane.YES_NO_OPTION)
-                == JOptionPane.YES_OPTION){
+            == JOptionPane.YES_OPTION){
             this.getComponentes();
             if(repositorio.Salvar(this.usuario)){
                 JOptionPane.showMessageDialog(this, "Dados salvos com sucesso!","Informação", JOptionPane.INFORMATION_MESSAGE);
                 this.setComponentes();
             } else {
-                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao salvar os dados. Por favor entre em contato com o administrador!","Erro!", 
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao salvar os dados. Por favor entre em contato com o administrador!","Erro!",
+                    JOptionPane.ERROR_MESSAGE);
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "Operação cancelada!","Informação", JOptionPane.INFORMATION_MESSAGE);
         }
+        
+        UsuarioBuscar tela = new UsuarioBuscar();
+        this.setVisible(false);
+        tela.setVisible(true);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         // TODO add your handling code here:
         if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o usuário atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
-                == JOptionPane.YES_OPTION){
+            == JOptionPane.YES_OPTION){
             if(repositorio.Apagar(this.usuario)){
+                UsuarioBuscar tela = new UsuarioBuscar();
                 this.setVisible(false);
+                tela.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!", 
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!",
+                    JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
@@ -176,10 +190,47 @@ public class UsuarioEditar extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja finalizar sem alteração? ", "Confirmação", JOptionPane.YES_NO_OPTION);
         if(resposta == JOptionPane.YES_OPTION){
+            UsuarioBuscar tela = new UsuarioBuscar();
             this.setVisible(false);
+            tela.setVisible(true);
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(UsuarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(UsuarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(UsuarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(UsuarioEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UsuarioEditar().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

@@ -1,10 +1,9 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.edu.ifnmg.clinicamedica_apresentacao_desktop;
 
-import static br.edu.ifnmg.clinicamedica_logicaapp.Atendimento_.usuario;
 import br.edu.ifnmg.clinicamedica_logicaapp.RepositorioFactory;
 import br.edu.ifnmg.clinicamedica_logicaapp.Usuario;
 import br.edu.ifnmg.clinicamedica_logicaapp.UsuarioRepositorio;
@@ -17,15 +16,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author alexs
  */
-public class UsuarioBuscar extends javax.swing.JInternalFrame {
+public class UsuarioBuscar extends javax.swing.JFrame {
     
     UsuarioRepositorio repositorio;
     Usuario usuario;
 
     /**
-     * Creates new form UsuarioBuscar
+     * Creates new form UsuarioPesquisar
      */
     public UsuarioBuscar() {
+        
         repositorio = RepositorioFactory.getUsuarioRepositorio();
         
         usuario = new Usuario();
@@ -49,13 +49,14 @@ public class UsuarioBuscar extends javax.swing.JInternalFrame {
         btnLimpar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblResultado = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
 
-        setClosable(true);
-        setTitle("Buscar Usuário");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Login:");
 
+        btnBuscar.setBackground(new java.awt.Color(153, 204, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +64,7 @@ public class UsuarioBuscar extends javax.swing.JInternalFrame {
             }
         });
 
+        btnNovoUsuario.setBackground(new java.awt.Color(204, 255, 204));
         btnNovoUsuario.setText("Novo Usuário");
         btnNovoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +72,7 @@ public class UsuarioBuscar extends javax.swing.JInternalFrame {
             }
         });
 
+        btnLimpar.setBackground(new java.awt.Color(255, 204, 102));
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +80,7 @@ public class UsuarioBuscar extends javax.swing.JInternalFrame {
             }
         });
 
+        tblResultado.setBackground(new java.awt.Color(204, 204, 255));
         tblResultado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -107,25 +111,34 @@ public class UsuarioBuscar extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblResultado);
 
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\1280152.png")); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBuscar)
-                                .addGap(77, 77, 77)
-                                .addComponent(btnNovoUsuario)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLimpar))
-                            .addComponent(txtLogin))))
+                        .addComponent(txtLogin))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(179, 179, 179)
+                        .addComponent(btnNovoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(173, 173, 173)
+                        .addComponent(btnLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -135,14 +148,16 @@ public class UsuarioBuscar extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovoUsuario)
-                    .addComponent(btnLimpar)
-                    .addComponent(btnBuscar))
                 .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNovoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -170,11 +185,18 @@ public class UsuarioBuscar extends javax.swing.JInternalFrame {
         tblResultado.setModel(modelo);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoUsuarioActionPerformed
+        // TODO add your handling code here:
+        UsuarioEditar tela = new UsuarioEditar(new Usuario());
+        this.setVisible(false);
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnNovoUsuarioActionPerformed
+
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         // TODO add your handling code here:
-        
+
         if(JOptionPane.showConfirmDialog(this, "Desejar realmente limpar a busca?", "Confirmação",JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
-        
+
             txtLogin.setText("");
 
             DefaultTableModel modelo = new DefaultTableModel();
@@ -186,32 +208,68 @@ public class UsuarioBuscar extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnLimparActionPerformed
 
-    private void btnNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoUsuarioActionPerformed
-        // TODO add your handling code here:
-        UsuarioEditar tela = new UsuarioEditar(new Usuario());
-        this.getParent().add(tela);
-        tela.setVisible(true);
-    }//GEN-LAST:event_btnNovoUsuarioActionPerformed
-
     private void tblResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResultadoMouseClicked
         // TODO add your handling code here:
         int linha = tblResultado.getSelectedRow();
-        
+
         Long id = Long.parseLong(tblResultado.getValueAt(linha, 0).toString() );
-        
+
         Usuario u = repositorio.Abrir(id);
-        
+
         UsuarioEditar tela = new UsuarioEditar(u);
-        this.getParent().add(tela);
+        this.setVisible(false);
         tela.setVisible(true);
     }//GEN-LAST:event_tblResultadoMouseClicked
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        Principal tela = new Principal();
+        this.setVisible(false);
+        tela.setVisible(true);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(UsuarioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(UsuarioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(UsuarioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(UsuarioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new UsuarioBuscar().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnNovoUsuario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblResultado;
     private javax.swing.JTextField txtLogin;

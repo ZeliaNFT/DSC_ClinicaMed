@@ -29,8 +29,9 @@ public class Principal extends javax.swing.JFrame {
         icoMedico = new javax.swing.JLabel();
         icoPaciente = new javax.swing.JLabel();
         icoAgenda = new javax.swing.JLabel();
-        icoUsuario = new javax.swing.JLabel();
+        icoConvenio = new javax.swing.JLabel();
         icoPagamento = new javax.swing.JLabel();
+        icoUsuario = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -43,7 +44,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clinica Medica");
-        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1150, 720));
 
         icoMedico.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\Webp.net-resizeimage (1).png")); // NOI18N
         icoMedico.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,10 +67,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        icoUsuario.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\Webp.net-resizeimage (8).png")); // NOI18N
-        icoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        icoConvenio.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\599f3922046be200019f134d_icon-home-convenios.png")); // NOI18N
+        icoConvenio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icoUsuarioMouseClicked(evt);
+                icoConvenioMouseClicked(evt);
             }
         });
 
@@ -77,6 +78,13 @@ public class Principal extends javax.swing.JFrame {
         icoPagamento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 icoPagamentoMouseClicked(evt);
+            }
+        });
+
+        icoUsuario.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\Webp.net-resizeimage (8).png")); // NOI18N
+        icoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                icoUsuarioMouseClicked(evt);
             }
         });
 
@@ -138,27 +146,30 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(icoMedico)
+                .addComponent(icoMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(icoPaciente)
+                .addComponent(icoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(icoAgenda)
+                .addComponent(icoAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(icoPagamento)
+                .addComponent(icoPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(icoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(icoUsuario)
-                .addContainerGap(1710, Short.MAX_VALUE))
+                .addComponent(icoConvenio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(160, 160, 160)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(icoUsuario)
+                    .addComponent(icoConvenio)
                     .addComponent(icoPaciente)
                     .addComponent(icoMedico)
                     .addComponent(icoAgenda)
-                    .addComponent(icoPagamento))
+                    .addComponent(icoPagamento)
+                    .addComponent(icoUsuario))
                 .addContainerGap(380, Short.MAX_VALUE))
         );
 
@@ -168,49 +179,49 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         UsuarioBuscar tela = new UsuarioBuscar();
-        this.add(tela);
         tela.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         EspecialidadeBuscar tela = new EspecialidadeBuscar();
-        this.add(tela);
+        this.setVisible(false);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         ConvenioBuscar tela = new ConvenioBuscar();
-        this.add(tela);
+        this.setVisible(false);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         MedicoBuscar tela = new MedicoBuscar();
-        this.add(tela);
+        this.setVisible(false);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         PacienteBuscar tela = new PacienteBuscar();
-        this.add(tela);
+        this.setVisible(false);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void icoMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoMedicoMouseClicked
         // TODO add your handling code here:
         MedicoBuscar tela = new MedicoBuscar();
-        this.add(tela);
+        this.setVisible(false);
         tela.setVisible(true);
     }//GEN-LAST:event_icoMedicoMouseClicked
 
     private void icoPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoPacienteMouseClicked
         // TODO add your handling code here:
         PacienteBuscar tela = new PacienteBuscar();
-        this.add(tela);
+        this.setVisible(false);
         tela.setVisible(true);
     }//GEN-LAST:event_icoPacienteMouseClicked
 
@@ -228,11 +239,18 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_icoPagamentoMouseClicked
 
-    private void icoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoUsuarioMouseClicked
+    private void icoConvenioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoConvenioMouseClicked
         // TODO add your handling code here:
         UsuarioBuscar tela = new UsuarioBuscar();
-        this.add(tela);
         tela.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_icoConvenioMouseClicked
+
+    private void icoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoUsuarioMouseClicked
+        // TODO add your handling code here:
+        ConvenioBuscar tela = new ConvenioBuscar();
+        tela.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_icoUsuarioMouseClicked
 
     /**
@@ -272,6 +290,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel icoAgenda;
+    private javax.swing.JLabel icoConvenio;
     private javax.swing.JLabel icoMedico;
     private javax.swing.JLabel icoPaciente;
     private javax.swing.JLabel icoPagamento;

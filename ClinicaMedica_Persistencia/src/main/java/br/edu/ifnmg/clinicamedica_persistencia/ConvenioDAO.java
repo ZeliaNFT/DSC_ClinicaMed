@@ -27,13 +27,15 @@ public class ConvenioDAO extends DataAccessObject<Convenio> implements ConvenioR
         
         Hashtable<String, Object> parametros = new Hashtable<>();
         
-        if(objeto.getNomeConvenio().length() > 0){
-            filtros += "conv.nomeConvenio like :nomeConvenio"; 
-            parametros.put("nomeConvenio", objeto.getNomeConvenio()+"%");
+        if(objeto != null){
+            if(objeto.getNomeConvenio().length() > 0){
+                filtros += "conv.nomeConvenio like :nomeConvenio"; 
+                parametros.put("nomeConvenio", objeto.getNomeConvenio()+"%");
+            }
+
+            if(filtros.length() > 0)
+                jpql = jpql + " where " + filtros;
         }
-        
-        if(filtros.length() > 0)
-            jpql = jpql + " where " + filtros;
         
         var query = this.manager.createQuery(jpql);
         

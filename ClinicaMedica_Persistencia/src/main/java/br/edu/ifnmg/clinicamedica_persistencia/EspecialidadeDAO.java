@@ -27,19 +27,19 @@ public class EspecialidadeDAO extends DataAccessObject<Especialidade> implements
         
         Hashtable<String, Object> parametros = new Hashtable<>();
         
-        if(objeto.getEspecializacao().length() > 0){
-            filtros += "espec.especializacao like :especializacao"; 
-            parametros.put("especializacao", objeto.getEspecializacao()+"%");
-        }
-        
-        if(filtros.length() > 0)
-            jpql = jpql + " where " + filtros;
-        
-        var query = this.manager.createQuery(jpql);
-        
-        for(String chave : parametros.keySet()){
-            query.setParameter(chave, parametros.get(chave));
-        }
+        if(objeto != null){
+            if(objeto.getEspecializacao().length() > 0){
+                filtros += "espec.especializacao like :especializacao"; 
+                parametros.put("especializacao", objeto.getEspecializacao()+"%");
+            }
+
+            if(filtros.length() > 0)
+                jpql = jpql + " where " + filtros;
+        }   
+            var query = this.manager.createQuery(jpql);
+            for(String chave : parametros.keySet()){
+                query.setParameter(chave, parametros.get(chave));
+            }
         
         return query.getResultList();
     }

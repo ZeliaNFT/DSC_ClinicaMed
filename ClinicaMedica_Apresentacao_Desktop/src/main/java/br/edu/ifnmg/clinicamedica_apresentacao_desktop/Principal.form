@@ -68,7 +68,7 @@
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Clinica Medica"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1280, 720]"/>
+      <Dimension value="[1150, 720]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -93,16 +93,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Component id="icoMedico" min="-2" max="-2" attributes="0"/>
+              <Component id="icoMedico" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="icoPaciente" min="-2" max="-2" attributes="0"/>
+              <Component id="icoPaciente" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="icoAgenda" min="-2" max="-2" attributes="0"/>
+              <Component id="icoAgenda" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="icoPagamento" min="-2" max="-2" attributes="0"/>
+              <Component id="icoPagamento" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="icoUsuario" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="icoUsuario" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="1710" max="32767" attributes="0"/>
+              <Component id="icoConvenio" max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,11 +113,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="icoUsuario" min="-2" max="-2" attributes="0"/>
+                  <Component id="icoConvenio" min="-2" max="-2" attributes="0"/>
                   <Component id="icoPaciente" min="-2" max="-2" attributes="0"/>
                   <Component id="icoMedico" min="-2" max="-2" attributes="0"/>
                   <Component id="icoAgenda" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="icoPagamento" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="icoUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="380" max="32767" attributes="0"/>
           </Group>
@@ -153,14 +156,14 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icoAgendaMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="icoUsuario">
+    <Component class="javax.swing.JLabel" name="icoConvenio">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\alexs\Downloads\Webp.net-resizeimage (8).png"/>
+          <Image iconType="2" name="C:\Users\alexs\Downloads\599f3922046be200019f134d_icon-home-convenios.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icoUsuarioMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icoConvenioMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="icoPagamento">
@@ -171,6 +174,16 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icoPagamentoMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="icoUsuario">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\alexs\Downloads\Webp.net-resizeimage (8).png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icoUsuarioMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

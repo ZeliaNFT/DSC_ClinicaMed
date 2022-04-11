@@ -27,14 +27,17 @@ public class MedicoDAO extends DataAccessObject<Medico> implements MedicoReposit
         
         Hashtable<String, Object> parametros = new Hashtable<>();
         
-        if(objeto.getCrm().length() > 0){
-            filtros += "med.crm like :crm"; 
-            parametros.put("crm", objeto.getCrm()+"%");
+        if(objeto != null){
+        
+            if(objeto.getCrm().length() > 0){
+                filtros += "med.crm like :crm"; 
+                parametros.put("crm", objeto.getCrm()+"%");
+            }
+
+            if(filtros.length() > 0)
+                jpql = jpql + " where " + filtros;
+            
         }
-        
-        if(filtros.length() > 0)
-            jpql = jpql + " where " + filtros;
-        
         var query = this.manager.createQuery(jpql);
         
         for(String chave : parametros.keySet()){

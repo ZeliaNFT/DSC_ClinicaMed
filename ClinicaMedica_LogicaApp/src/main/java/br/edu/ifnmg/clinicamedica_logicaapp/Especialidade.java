@@ -84,7 +84,7 @@ public class Especialidade implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.clinicamedica_logicaapp.Especialidade[ id=" + id + " ]";
+        return this.especializacao;
     }
     
 }

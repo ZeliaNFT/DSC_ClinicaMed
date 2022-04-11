@@ -27,20 +27,22 @@ public class PessoaDAO extends DataAccessObject<Pessoa> implements PessoaReposit
         
         Hashtable<String, Object> parametros = new Hashtable<>();
         
-        if(objeto.getNome().length() > 0){
-            filtros += "a.nome like :nome"; 
-            parametros.put("nome", objeto.getNome()+"%");
-        }
-        
-        if(objeto.getTipo() != null){
+        if(objeto != null){
+            if(objeto.getNome().length() > 0){
+                filtros += "a.nome like :nome"; 
+                parametros.put("nome", objeto.getNome()+"%");
+            }
+
+            if(objeto.getTipo() != null){
+                if(filtros.length() > 0)
+                    filtros += " and ";
+                filtros += "a.tipo = :tipo"; 
+                parametros.put("tipo", objeto.getTipo());
+            }
+
             if(filtros.length() > 0)
-                filtros += " and ";
-            filtros += "a.tipo = :tipo"; 
-            parametros.put("tipo", objeto.getTipo());
+                jpql = jpql + " where " + filtros;
         }
-        
-        if(filtros.length() > 0)
-            jpql = jpql + " where " + filtros;
         
         var query = this.manager.createQuery(jpql);
         

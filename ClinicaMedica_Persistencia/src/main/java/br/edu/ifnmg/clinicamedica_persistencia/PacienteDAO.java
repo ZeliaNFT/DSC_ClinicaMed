@@ -27,13 +27,15 @@ public class PacienteDAO extends DataAccessObject<Paciente> implements PacienteR
         
         Hashtable<String, Object> parametros = new Hashtable<>();
         
-        if(objeto.getNome().length() > 0){
-            filtros += "pac.nome like :nome"; 
-            parametros.put("nome", objeto.getNome()+"%");
+        if(objeto != null){
+            if(objeto.getNome().length() > 0){
+                filtros += "pac.nome like :nome"; 
+                parametros.put("nome", objeto.getNome()+"%");
+            }
+
+            if(filtros.length() > 0)
+                jpql = jpql + " where " + filtros;
         }
-        
-        if(filtros.length() > 0)
-            jpql = jpql + " where " + filtros;
         
         var query = this.manager.createQuery(jpql);
         

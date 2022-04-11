@@ -1,61 +1,75 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.edu.ifnmg.clinicamedica_apresentacao_desktop;
 
+import br.edu.ifnmg.clinicamedica_logicaapp.Especialidade;
+import br.edu.ifnmg.clinicamedica_logicaapp.EspecialidadeRepositorio;
 import br.edu.ifnmg.clinicamedica_logicaapp.Medico;
 import br.edu.ifnmg.clinicamedica_logicaapp.MedicoRepositorio;
 import br.edu.ifnmg.clinicamedica_logicaapp.RepositorioFactory;
 import br.edu.ifnmg.clinicamedica_logicaapp.TipoGenero;
+import java.util.List;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author alexs
  */
-public class MedicoEditar extends javax.swing.JInternalFrame {
+public class MedicoEditar extends javax.swing.JFrame {
     
     MedicoRepositorio repositorio;
     Medico medico;
-    
+    EspecialidadeRepositorio repositorioEsp;
+
     /**
-     * Creates new form MedicoEditar
+     * Creates new form MedicoAlterar
      */
-    public MedicoEditar(Medico u){
+    public MedicoEditar(Medico u) {
         this.medico = u;
         repositorio = RepositorioFactory.getMedicoRepositorio();
+        repositorioEsp = RepositorioFactory.getEspecialidadeRepositorio();
         initComponents();
-        this.setComponentes();
         for(TipoGenero tipo : TipoGenero.values()) {
             cbGenero.addItem(tipo.toString());
         }
+        List<Especialidade> lista = repositorioEsp.Buscar(null);
+        ComboBoxModel<Object> modelo = new DefaultComboBoxModel<>(lista.toArray());
+        cbEspecialidade.setModel(modelo);
+        this.setComponentes();
+    }
+
+    private MedicoEditar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public void setComponentes(){
         this.lblId.setText(this.medico.getId().toString());
         this.txtNome.setText(this.medico.getNome());
-        this.cbGenero.setSelectedItem(this.medico.getGenero());
+        this.cbGenero.setSelectedItem(this.medico.getGenero().name());
         this.txtCPF.setText(this.medico.getCpf());
         this.txtEndereco.setText(this.medico.getEndereco());
         this.txtCRM.setText(this.medico.getCrm());
-        this.cbEspecialidade.setSelectedItem(this.medico.getEspecializacao().getEspecializacao());
+        this.cbEspecialidade.setSelectedItem(this.medico.getEspecializacao());
         this.txtTelefone.setText(this.medico.getTelefone());
         this.dtDataNascimento.setDate(this.medico.getDataNascimento());
         this.txtEmail.setText(this.medico.getEmail());
     }
     
-    /*public void getComponentes(){
+    public void getComponentes(){
         this.medico.setNome(this.txtNome.getText());
         this.medico.setGenero(TipoGenero.valueOf(cbGenero.getSelectedItem().toString()));
         this.medico.setCpf(this.txtCPF.getText());
         this.medico.setEndereco(this.txtEndereco.getText());
         this.medico.setCrm(this.txtCRM.getText());
-        this.medico.setEspecializacao((this.txtEspecialidade.getText()));
+        this.medico.setEspecializacao((Especialidade)this.cbEspecialidade.getSelectedItem());
         this.medico.setTelefone(this.txtTelefone.getText());
         this.medico.setDataNascimento(this.dtDataNascimento.getDate());
-        this.medico.setEmail(this.medico.getEmail());
-    }*/
+        this.medico.setEmail(this.txtEmail.getText());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,33 +81,34 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
-        txtCPF = new javax.swing.JTextField();
-        txtEndereco = new javax.swing.JTextField();
-        txtCRM = new javax.swing.JTextField();
-        txtTelefone = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
         lblId = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         cbGenero = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        txtCPF = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtEndereco = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtCRM = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        cbEspecialidade = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        txtTelefone = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        dtDataNascimento = new com.toedter.calendar.JDateChooser();
+        jLabel10 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        dtDataNascimento = new com.toedter.calendar.JDateChooser();
-        cbEspecialidade = new javax.swing.JComboBox<>();
 
-        setClosable(true);
-        setTitle("Cadastrar Médico");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("ID");
+
+        lblId.setText("0");
 
         jLabel2.setText("Nome");
 
@@ -113,8 +128,7 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
 
         jLabel10.setText("E-mail");
 
-        lblId.setText("0");
-
+        btnSalvar.setBackground(new java.awt.Color(204, 255, 204));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +136,7 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
             }
         });
 
+        btnRemover.setBackground(new java.awt.Color(255, 204, 102));
         btnRemover.setText("Remover");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +144,7 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(255, 153, 153));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,11 +178,11 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
                     .addComponent(txtTelefone)
                     .addComponent(cbGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSalvar)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(153, 153, 153)
+                        .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(145, 145, 145)
-                        .addComponent(btnRemover)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
-                        .addComponent(btnCancelar))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(txtEmail)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,13 +238,11 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
                             .addComponent(jLabel10))))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnRemover)
-                    .addComponent(btnCancelar))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
-
-        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,30 +250,36 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
         if(JOptionPane.showConfirmDialog(this, "Deseja realmente salvar os dados do médico?", "Confirmação", JOptionPane.YES_NO_OPTION)
-                == JOptionPane.YES_OPTION){
-            //this.getComponentes();
+            == JOptionPane.YES_OPTION){
+            this.getComponentes();
             if(repositorio.Salvar(this.medico)){
                 JOptionPane.showMessageDialog(this, "Dados salvos com sucesso!","Informação", JOptionPane.INFORMATION_MESSAGE);
                 this.setComponentes();
             } else {
-                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao salvar os dados. Por favor entre em contato com o administrador!","Erro!", 
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao salvar os dados. Por favor entre em contato com o administrador!","Erro!",
+                    JOptionPane.ERROR_MESSAGE);
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "Operação cancelada!","Informação", JOptionPane.INFORMATION_MESSAGE);
         }
+        
+        MedicoBuscar tela = new MedicoBuscar();
+        this.setVisible(false);
+        tela.setVisible(true);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         // TODO add your handling code here:
         if(JOptionPane.showConfirmDialog(this, "Deseja realmente remover o médico atual?", "Confirmação", JOptionPane.YES_NO_OPTION)
-                == JOptionPane.YES_OPTION){
+            == JOptionPane.YES_OPTION){
             if(repositorio.Apagar(this.medico)){
+                MedicoBuscar tela = new MedicoBuscar();
                 this.setVisible(false);
+                tela.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!", 
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao remover os dados. Por favor entre em contato com o administrador!","Erro!",
+                    JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
@@ -268,16 +288,53 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja finalizar sem alteração? ", "Confirmação", JOptionPane.YES_NO_OPTION);
         if(resposta == JOptionPane.YES_OPTION){
+            MedicoBuscar tela = new MedicoBuscar();
             this.setVisible(false);
+            tela.setVisible(true);
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MedicoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MedicoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MedicoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MedicoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MedicoEditar().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> cbEspecialidade;
+    private javax.swing.JComboBox<Object> cbEspecialidade;
     private javax.swing.JComboBox<String> cbGenero;
     private com.toedter.calendar.JDateChooser dtDataNascimento;
     private javax.swing.JLabel jLabel1;
@@ -298,5 +355,4 @@ public class MedicoEditar extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
-
 }

@@ -27,13 +27,15 @@ public class PagamentoDAO extends DataAccessObject<Pagamento> implements Pagamen
         
         Hashtable<String, Object> parametros = new Hashtable<>();
         
-        if(objeto.getDataPagamento() != null){
-            filtros += "pag.dataPagemento like :dataPagamento"; 
-            parametros.put("dataPagamento", objeto.getDataPagamento()+"%");
+        if(objeto != null){
+            if(objeto.getDataPagamento() != null){
+                filtros += "pag.dataPagemento like :dataPagamento"; 
+                parametros.put("dataPagamento", objeto.getDataPagamento()+"%");
+            }
+
+            if(filtros.length() > 0)
+                jpql = jpql + " where " + filtros;
         }
-        
-        if(filtros.length() > 0)
-            jpql = jpql + " where " + filtros;
         
         var query = this.manager.createQuery(jpql);
         

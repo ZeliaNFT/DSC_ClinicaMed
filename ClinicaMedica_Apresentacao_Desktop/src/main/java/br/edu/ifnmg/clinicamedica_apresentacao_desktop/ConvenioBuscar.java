@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.edu.ifnmg.clinicamedica_apresentacao_desktop;
 
@@ -16,14 +16,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author alexs
  */
-public class ConvenioBuscar extends javax.swing.JInternalFrame {
+public class ConvenioBuscar extends javax.swing.JFrame {
     
     ConvenioRepositorio repositorio;
     
     Convenio convenio;
 
     /**
-     * Creates new form ConvenioBuscar
+     * Creates new form ConvenioPesquisar
      */
     public ConvenioBuscar() {
         
@@ -48,11 +48,13 @@ public class ConvenioBuscar extends javax.swing.JInternalFrame {
         btnLimpar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblResultado = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
-        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Convenio");
 
+        btnBuscar.setBackground(new java.awt.Color(153, 204, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +62,7 @@ public class ConvenioBuscar extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCadastrar.setBackground(new java.awt.Color(204, 255, 204));
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +70,7 @@ public class ConvenioBuscar extends javax.swing.JInternalFrame {
             }
         });
 
+        btnLimpar.setBackground(new java.awt.Color(255, 204, 102));
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +78,7 @@ public class ConvenioBuscar extends javax.swing.JInternalFrame {
             }
         });
 
+        tblResultado.setBackground(new java.awt.Color(204, 204, 255));
         tblResultado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -104,25 +109,35 @@ public class ConvenioBuscar extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblResultado);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexs\\Downloads\\1280152.png")); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(284, 284, 284)
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(285, 285, 285)
+                        .addComponent(btnLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(txtConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBuscar)
-                        .addGap(156, 156, 156)
-                        .addComponent(btnCadastrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLimpar))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(txtConvenio)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,12 +148,14 @@ public class ConvenioBuscar extends javax.swing.JInternalFrame {
                     .addComponent(txtConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar)
-                    .addComponent(btnCadastrar)
-                    .addComponent(btnLimpar))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -152,24 +169,31 @@ public class ConvenioBuscar extends javax.swing.JInternalFrame {
         modelo.addColumn("ID");
         modelo.addColumn("Convenio");
         modelo.addColumn("Desconto");
-        
+
         for(Convenio u : resultado){
             Vector linha = new Vector();
             linha.add(u.getId());
             linha.add(u.getNomeConvenio());
             linha.add(u.getValorDesconto());
-            
+
             modelo.addRow(linha);
-            
+
         }
-        
+
         tblResultado.setModel(modelo);
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        ConvenioEditar tela = new ConvenioEditar(new Convenio());
+        this.setVisible(false);
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         // TODO add your handling code here:
         if(JOptionPane.showConfirmDialog(this, "Desejar realmente limpar a busca?", "Confirmação",JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
-        
+
             txtConvenio.setText("");
 
             DefaultTableModel modelo = new DefaultTableModel();
@@ -185,29 +209,65 @@ public class ConvenioBuscar extends javax.swing.JInternalFrame {
     private void tblResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResultadoMouseClicked
         // TODO add your handling code here:
         int linha = tblResultado.getSelectedRow();
-        
+
         Long id = Long.parseLong(tblResultado.getValueAt(linha, 0).toString() );
-        
+
         Convenio u = repositorio.Abrir(id);
-        
+
         ConvenioEditar tela = new ConvenioEditar(u);
-        this.getParent().add(tela);
+        this.setVisible(false);
         tela.setVisible(true);
     }//GEN-LAST:event_tblResultadoMouseClicked
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        ConvenioEditar tela = new ConvenioEditar(new Convenio());
-        this.getParent().add(tela);
+        Principal tela = new Principal();
+        this.setVisible(false);
         tela.setVisible(true);
-    }//GEN-LAST:event_btnCadastrarActionPerformed
+    }//GEN-LAST:event_jLabel2MouseClicked
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ConvenioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ConvenioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ConvenioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ConvenioBuscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ConvenioBuscar().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblResultado;
     private javax.swing.JTextField txtConvenio;
