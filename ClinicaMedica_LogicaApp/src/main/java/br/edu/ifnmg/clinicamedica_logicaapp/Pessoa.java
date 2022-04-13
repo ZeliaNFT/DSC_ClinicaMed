@@ -29,7 +29,6 @@ import javax.persistence.InheritanceType;
 @Entity
 @Table(name = "Pessoas")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER, name = "tipo")
 
 public class Pessoa implements Serializable {
 

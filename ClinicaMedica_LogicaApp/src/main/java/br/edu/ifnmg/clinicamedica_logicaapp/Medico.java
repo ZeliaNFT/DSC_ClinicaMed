@@ -25,7 +25,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Medicos")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "1")
 public class Medico extends Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -100,7 +99,7 @@ public class Medico extends Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.clinicamedica_logicaapp.Medico[ id=" + id + " ]";
+        return this.crm;
     }
     
 }

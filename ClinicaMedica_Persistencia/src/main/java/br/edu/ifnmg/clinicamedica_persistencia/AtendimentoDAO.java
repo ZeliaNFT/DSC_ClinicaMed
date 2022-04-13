@@ -28,15 +28,15 @@ public class AtendimentoDAO extends DataAccessObject<Atendimento> implements Ate
         Hashtable<String, Object> parametros = new Hashtable<>();
         
         if(objeto != null){
-            if(objeto.getAtendimentoTipo()!= null){
-                filtros += "at.tipoAtendimento like :tipoAtendimento"; 
-                parametros.put("tipoAtendimento", objeto.getAtendimentoTipo()+"%");
+            if(objeto.getId()!= null){
+                filtros += "at.id like :id"; 
+                parametros.put("id", objeto.getId()+"%");
             }
 
             if(filtros.length() > 0)
                 jpql = jpql + " where " + filtros;
         }
-        
+
         var query = this.manager.createQuery(jpql);
         
         for(String chave : parametros.keySet()){

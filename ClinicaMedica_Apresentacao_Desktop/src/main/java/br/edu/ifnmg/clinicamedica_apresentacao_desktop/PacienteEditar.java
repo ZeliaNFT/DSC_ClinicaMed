@@ -26,10 +26,10 @@ public class PacienteEditar extends javax.swing.JFrame {
         this.paciente = u;
         repositorio = RepositorioFactory.getPacienteRepositorio();
         initComponents();
-        this.setComponentes();
         for(TipoGenero tipo : TipoGenero.values()) {
             cbGenero.addItem(tipo.toString());
         }
+        this.setComponentes();
     }
 
     private PacienteEditar() {
@@ -39,7 +39,7 @@ public class PacienteEditar extends javax.swing.JFrame {
     public void setComponentes(){
         this.lblId.setText(this.paciente.getId().toString());
         this.txtNome.setText(this.paciente.getNome());
-        this.cbGenero.setSelectedItem(this.paciente.getGenero());
+        this.cbGenero.setSelectedItem(this.paciente.getGenero().name());
         this.txtCPF.setText(this.paciente.getCpf());
         this.txtHistorico.setText(this.paciente.getHistorico());
         this.txtEndereco.setText(this.paciente.getEndereco());
@@ -73,7 +73,6 @@ public class PacienteEditar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        cbGenero = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -89,6 +88,7 @@ public class PacienteEditar extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        cbGenero = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,12 +172,12 @@ public class PacienteEditar extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCPF)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbGenero, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCPF))))
+                            .addComponent(cbGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

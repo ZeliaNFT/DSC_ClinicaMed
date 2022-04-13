@@ -22,7 +22,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Pacientes")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "2")
 public class Paciente extends Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -86,7 +85,7 @@ public class Paciente extends Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.clinicamedica_logicaapp.Paciente[ id=" + id + " ]";
+        return this.getCpf();
     }
     
 }

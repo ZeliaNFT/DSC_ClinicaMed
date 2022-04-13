@@ -28,9 +28,9 @@ public class PagamentoDAO extends DataAccessObject<Pagamento> implements Pagamen
         Hashtable<String, Object> parametros = new Hashtable<>();
         
         if(objeto != null){
-            if(objeto.getDataPagamento() != null){
-                filtros += "pag.dataPagemento like :dataPagamento"; 
-                parametros.put("dataPagamento", objeto.getDataPagamento()+"%");
+            if(objeto.getId()!= null){
+                filtros += "pag.id like :id"; 
+                parametros.put("id", objeto.getId()+"%");
             }
 
             if(filtros.length() > 0)

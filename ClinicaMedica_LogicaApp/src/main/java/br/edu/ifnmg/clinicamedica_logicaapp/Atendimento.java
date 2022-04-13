@@ -7,6 +7,8 @@ package br.edu.ifnmg.clinicamedica_logicaapp;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -300,7 +302,7 @@ public class Atendimento implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.clinicamedica_logicaapp.Atendimento[ id=" + id + " ]";
+        return this.valor.toString();
     }
     
 }

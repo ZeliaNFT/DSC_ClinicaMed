@@ -4,6 +4,9 @@
  */
 package br.edu.ifnmg.clinicamedica_apresentacao_desktop;
 
+import br.edu.ifnmg.clinicamedica_logicaapp.Atendimento;
+import br.edu.ifnmg.clinicamedica_logicaapp.Pagamento;
+
 /**
  *
  * @author alexs
@@ -227,14 +230,14 @@ public class Principal extends javax.swing.JFrame {
 
     private void icoAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoAgendaMouseClicked
         // TODO add your handling code here:
-        Atendimento tela = new Atendimento();
+        AtendimentoNovo tela = new AtendimentoNovo(new Atendimento());
         tela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_icoAgendaMouseClicked
 
     private void icoPagamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoPagamentoMouseClicked
         // TODO add your handling code here:
-        Pagamento tela = new Pagamento();
+        PagamentoNovo tela = new PagamentoNovo( new Pagamento());
         tela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_icoPagamentoMouseClicked
