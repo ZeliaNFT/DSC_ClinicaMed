@@ -15,10 +15,9 @@ import br.edu.ifnmg.clinicamedica_logicaapp.RepositorioFactory;
 import br.edu.ifnmg.clinicamedica_logicaapp.TipoAtendimento;
 import java.math.BigDecimal;
 import java.util.List;
-import javax.persistence.Table;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,32 +31,35 @@ public class AtendimentoNovo extends javax.swing.JFrame {
     PacienteRepositorio repositorioPac;
     /**
      * Creates new form Atendimento
+     * @param u
      */
     public AtendimentoNovo(Atendimento u) {
+        
         this.atendimento = u;
+        
+        repositorio = RepositorioFactory.getAtendimentoRepositorio();
         repositorioPac = RepositorioFactory.getPacienteRepositorio();
         repositorioMed = RepositorioFactory.getMedicoRepositorio();
+        
         initComponents();
+        
         for(TipoAtendimento tipo : TipoAtendimento.values()) {
             cbTipo.addItem(tipo.toString());
         }
+        
         for(AtendimentoSituacoes tipo : AtendimentoSituacoes.values()) {
             cbSituacoes.addItem(tipo.toString());
         }
         
-        List<Medico> lista = repositorioMed.Buscar(null);
-        ComboBoxModel<Object> modelo = new DefaultComboBoxModel<>(lista.toArray());
-        cbMedico.setModel(modelo);
+        List<Medico> listamed = repositorioMed.Buscar(null);
+        ComboBoxModel<Object> modelomed = new DefaultComboBoxModel<>(listamed.toArray());
+        cbMedico.setModel(modelomed);
         
         List<Paciente> listapac = repositorioPac.Buscar(null);
         ComboBoxModel<Object> modelopac = new DefaultComboBoxModel<>(listapac.toArray());
         cbPaciente.setModel(modelopac);
         
         this.setComponentes();
-    }
-
-    private AtendimentoNovo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public void setComponentes(){
@@ -104,7 +106,7 @@ public class AtendimentoNovo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Atendimento");
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(700, 300));
 
         jLabel1.setText("Paciente");
 
@@ -165,7 +167,7 @@ public class AtendimentoNovo extends javax.swing.JFrame {
                             .addComponent(cbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbPaciente, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbMedico, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 144, Short.MAX_VALUE))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +200,7 @@ public class AtendimentoNovo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,8 +215,29 @@ public class AtendimentoNovo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(this, "Deseja realmente salvar os dados do atendimento?", "Confirmação", JOptionPane.YES_NO_OPTION)
+            == JOptionPane.YES_OPTION){
+            this.getComponentes();
+            if(repositorio.Salvar(this.atendimento)){
+                JOptionPane.showMessageDialog(this, "Dados salvos com sucesso!","Informação", JOptionPane.INFORMATION_MESSAGE);
+                this.setComponentes();
+            } else {
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao salvar os dados. Por favor entre em contato com o administrador!","Erro!",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Operação cancelada!","Informação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        Agenda tela = new Agenda();
+        this.setVisible(false);
+        tela.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+     private AtendimentoNovo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     /**
      * @param args the command line arguments
      */

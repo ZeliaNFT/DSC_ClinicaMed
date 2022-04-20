@@ -43,7 +43,7 @@ public class Principal {
     
     public static void criarBase(){
         
-        UsuarioRepositorio repou = new UsuarioDAO();
+        /*UsuarioRepositorio repou = new UsuarioDAO();
         repou.Salvar(new Usuario("Medico", "12345"));
         repou.Salvar(new Usuario("Paciente", "12345"));
         
@@ -98,7 +98,7 @@ public class Principal {
         
         var pag1 = repopa.Abrir(1L);
         var pag2 = repopa.Abrir(2L);
-        var pag3 = repopa.Abrir(3L);
+        var pag3 = repopa.Abrir(3L);*/
         
     }
     public static void main(String[] args){

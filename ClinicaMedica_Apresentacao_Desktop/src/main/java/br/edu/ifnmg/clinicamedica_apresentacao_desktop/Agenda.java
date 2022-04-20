@@ -7,7 +7,6 @@ package br.edu.ifnmg.clinicamedica_apresentacao_desktop;
 import br.edu.ifnmg.clinicamedica_logicaapp.Atendimento;
 import br.edu.ifnmg.clinicamedica_logicaapp.AtendimentoRepositorio;
 import br.edu.ifnmg.clinicamedica_logicaapp.RepositorioFactory;
-import br.edu.ifnmg.clinicamedica_logicaapp.TipoAtendimento;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -142,7 +141,6 @@ public class Agenda extends javax.swing.JFrame {
             linha.add(u.getSituacao());
             linha.add(u.getDataAtendimento());
             linha.add(u.getMedico());
-
             modelo.addRow(linha);
 
         }

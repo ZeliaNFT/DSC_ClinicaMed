@@ -142,27 +142,6 @@ public class Pagamento implements Serializable {
         this.usuario = usuario;
         this.convenio = convenio;
     }
-    
-    public Pagamento(Usuario usuario, Atendimento atendimento, FormaPagamento pagamento, Convenio convenio){
-        this.id = 0L;
-        this.dataPagamento = new Date();
-        this.pagamento = pagamento;
-        this.qtdParcelas = 0;
-        this.dataVencimento = new Date();
-        this.atendimento = atendimento;
-        this.usuario = usuario;
-        this.convenio = convenio;
-    }
-    
-    public Pagamento(Usuario usuario, Atendimento atendimento, FormaPagamento pagamento){
-        this.id = 0L;
-        this.dataPagamento = new Date();
-        this.pagamento = pagamento;
-        this.qtdParcelas = 0;
-        this.dataVencimento = new Date();
-        this.atendimento = atendimento;
-        this.usuario = usuario;
-    }
 
     @Override
     public int hashCode() {
@@ -187,9 +166,5 @@ public class Pagamento implements Serializable {
     @Override
     public String toString() {
         return "br.edu.ifnmg.clinicamedica_logicaapp.Pagamento[ id=" + id + " ]";
-    }
-
-    public void setVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

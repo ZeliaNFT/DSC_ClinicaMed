@@ -6,6 +6,19 @@ package br.edu.ifnmg.clinicamedica_apresentacao_desktop;
 
 import br.edu.ifnmg.clinicamedica_logicaapp.Atendimento;
 import br.edu.ifnmg.clinicamedica_logicaapp.Pagamento;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -18,6 +31,37 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+    }
+    
+     private void carregarRelatorio(String caminho_relatorio, Map parametros) {
+        try {
+            // Carrega o Driver do MySQL
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            // Cria uma conexão com o SGBD
+            Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/ClinicaMedica","root","gl.maestro.118");
+            
+            // Abrindo e compilando o arquivo do relatório
+            JasperReport relatorio = JasperCompileManager.compileReport(caminho_relatorio);
+            
+            // Preencher com dados o relatório
+            JasperPrint relatorio_preenchido = JasperFillManager.fillReport(relatorio, parametros, conexao);
+            
+            // Mostra a tela de visualização do relatório
+            JasperViewer.viewReport(relatorio_preenchido);
+            
+            // Fechar a conexão com o SGBD
+            conexao.close();
+        } catch (JRException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Erro ao carregar relatório!");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Erro ao carregar Driver do Banco de Dados!");
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Erro ao carregar dados do relatório!");
+        }
     }
 
     /**
@@ -44,6 +88,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clinica Medica");
@@ -139,6 +184,15 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Relatórios");
+
+        jMenuItem6.setText("Atendimentos");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem6);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -230,7 +284,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void icoAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoAgendaMouseClicked
         // TODO add your handling code here:
-        AtendimentoNovo tela = new AtendimentoNovo(new Atendimento());
+        AtendimentoNovo tela = new AtendimentoNovo( new Atendimento());
         tela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_icoAgendaMouseClicked
@@ -255,6 +309,11 @@ public class Principal extends javax.swing.JFrame {
         tela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_icoUsuarioMouseClicked
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        carregarRelatorio("Relatorios/Consultas.jrxml", null);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,5 +366,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }

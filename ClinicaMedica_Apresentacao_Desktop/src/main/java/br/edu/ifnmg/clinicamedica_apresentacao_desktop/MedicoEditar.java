@@ -39,6 +39,7 @@ public class MedicoEditar extends javax.swing.JFrame {
         List<Especialidade> lista = repositorioEsp.Buscar(null);
         ComboBoxModel<Object> modelo = new DefaultComboBoxModel<>(lista.toArray());
         cbEspecialidade.setModel(modelo);
+        
         this.setComponentes();
     }
 

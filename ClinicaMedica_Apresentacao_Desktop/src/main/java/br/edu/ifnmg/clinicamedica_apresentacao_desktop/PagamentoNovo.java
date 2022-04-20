@@ -13,6 +13,7 @@ import br.edu.ifnmg.clinicamedica_logicaapp.RepositorioFactory;
 import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -105,6 +106,11 @@ public class PagamentoNovo extends javax.swing.JFrame {
         });
 
         jButton2.setText("Finalizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,9 +140,7 @@ public class PagamentoNovo extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                                 .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
                             .addComponent(dtVencimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbValor, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(cbValor, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -178,6 +182,28 @@ public class PagamentoNovo extends javax.swing.JFrame {
         this.setVisible(false);
         tela.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(this, "Deseja realmente salvar os dados do pagamento?", "Confirmação", JOptionPane.YES_NO_OPTION)
+            == JOptionPane.YES_OPTION){
+            this.getComponentes();
+            if(repositorio.Salvar(this.pagamento)){
+                JOptionPane.showMessageDialog(this, "Dados salvos com sucesso!","Informação", JOptionPane.INFORMATION_MESSAGE);
+                this.setComponentes();
+            } else {
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao salvar os dados. Por favor entre em contato com o administrador!","Erro!",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Operação cancelada!","Informação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        PagamentoBuscar tela = new PagamentoBuscar();
+        this.setVisible(false);
+        tela.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

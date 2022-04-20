@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl">
+  <name>Clinica Medica - DSC</name>
+  <classpath>C:\Program Files (x86)\MySQL\Connector J 8.0\mysql-connector-java-8.0.27.jar</classpath>
+  <driver>com.mysql.jdbc.Driver</driver>
+  <username>root</username>
+  <password>gl.maestro.118</password>
+  <url>jdbc:mysql://localhost/ClinicaMedica</url>
+  <database></database>
+  <savePassword>true</savePassword>
+  <serverAddress></serverAddress>
+</jdbcDataAdapter>
