@@ -77,7 +77,7 @@ public class AtendimentoNovo extends javax.swing.JFrame {
         this.atendimento.setDataAtendimento(this.dtAtendimento.getDate());
         this.atendimento.setSituacao(AtendimentoSituacoes.valueOf(cbSituacoes.getSelectedItem().toString()));
         this.atendimento.setAtendimentoTipo(TipoAtendimento.valueOf(cbTipo.getSelectedItem().toString()));
-        this.atendimento.setValor(new BigDecimal(this.atendimento.getValor().toString()));
+        this.atendimento.setValor(new BigDecimal(this.txtValor.getText()));
     }
 
     /**
