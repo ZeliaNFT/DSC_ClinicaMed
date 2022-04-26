@@ -96,7 +96,7 @@ public class PagamentoNovo extends javax.swing.JFrame {
 
         jLabel4.setText("Data de Vencimento");
 
-        jLabel5.setText("Valor");
+        jLabel5.setText("Atendimento");
 
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

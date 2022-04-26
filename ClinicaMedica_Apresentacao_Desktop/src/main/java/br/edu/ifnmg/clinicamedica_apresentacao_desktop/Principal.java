@@ -87,6 +87,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
 
@@ -180,6 +182,22 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem3);
+
+        jMenuItem7.setText("Atendimentos");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem8.setText("Pagamentos");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
 
@@ -284,28 +302,28 @@ public class Principal extends javax.swing.JFrame {
 
     private void icoAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoAgendaMouseClicked
         // TODO add your handling code here:
-        AtendimentoNovo tela = new AtendimentoNovo( new Atendimento());
+        Agenda tela = new Agenda();
         tela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_icoAgendaMouseClicked
 
     private void icoPagamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoPagamentoMouseClicked
         // TODO add your handling code here:
-        PagamentoNovo tela = new PagamentoNovo( new Pagamento());
+        PagamentoBuscar tela = new PagamentoBuscar();
         tela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_icoPagamentoMouseClicked
 
     private void icoConvenioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoConvenioMouseClicked
         // TODO add your handling code here:
-        UsuarioBuscar tela = new UsuarioBuscar();
+        ConvenioBuscar tela = new ConvenioBuscar();
         tela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_icoConvenioMouseClicked
 
     private void icoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icoUsuarioMouseClicked
         // TODO add your handling code here:
-        ConvenioBuscar tela = new ConvenioBuscar();
+        UsuarioBuscar tela = new UsuarioBuscar();
         tela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_icoUsuarioMouseClicked
@@ -314,6 +332,20 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         carregarRelatorio("Relatorios/Consultas.jrxml", null);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        PagamentoNovo tela = new PagamentoNovo( new Pagamento());
+        tela.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        AtendimentoNovo tela = new AtendimentoNovo( new Atendimento());
+        tela.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,5 +399,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }
