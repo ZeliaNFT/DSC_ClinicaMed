@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pagamentos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7cf46dc-d71d-4b0a-922a-06d00ac14bcc">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[Y2xpbmljYW1lZGljYS5hdGVuZGltZW50b3MgQVMgLDIzNSw5NCwyZGI5OWFhMS1lYWRhLTQ4MTAt
+OWFkYi0xMDA3ZTJjMDBlZWI7Y2xpbmljYW1lZGljYS5wYWdhbWVudG9zIEFTICw0Niw3NSxiODA1
+MjM5Mi0wNjRjLTQzYTAtODI4Ni03MTNmYzY3YzZmYmI7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ClinicaMedica.jrdax"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT clinicamedica.pagamentos.`dataPagamento`,
+	clinicamedica.pagamentos.`dataVencimento`,
+	clinicamedica.pagamentos.`PAGAMENTO`,
+	clinicamedica.pagamentos.`qtdParcelas`,
+	clinicamedica.pagamentos.atedimento_fk
+FROM clinicamedica.pagamentos
+	INNER JOIN clinicamedica.atendimentos ON 
+	 clinicamedica.pagamentos.atedimento_fk = clinicamedica.atendimentos.`ID`]]>
+	</queryString>
+	<field name="dataPagamento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="dataPagamento"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataPagamento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagamentos"/>
+	</field>
+	<field name="dataVencimento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="dataVencimento"/>
+		<property name="com.jaspersoft.studio.field.label" value="dataVencimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagamentos"/>
+	</field>
+	<field name="PAGAMENTO" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="PAGAMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="PAGAMENTO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagamentos"/>
+	</field>
+	<field name="qtdParcelas" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="qtdParcelas"/>
+		<property name="com.jaspersoft.studio.field.label" value="qtdParcelas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagamentos"/>
+	</field>
+	<field name="atedimento_fk" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="atedimento_fk"/>
+		<property name="com.jaspersoft.studio.field.label" value="atedimento_fk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagamentos"/>
+	</field>
+	<group name="dataPagamento">
+		<groupExpression><![CDATA[$F{dataPagamento}]]></groupExpression>
+	</group>
+	<group name="dataVencimento">
+		<groupExpression><![CDATA[$F{dataVencimento}]]></groupExpression>
+	</group>
+	<group name="PAGAMENTO">
+		<groupExpression><![CDATA[$F{PAGAMENTO}]]></groupExpression>
+	</group>
+	<group name="qtdParcelas">
+		<groupExpression><![CDATA[$F{qtdParcelas}]]></groupExpression>
+	</group>
+	<group name="atedimento_fk">
+		<groupExpression><![CDATA[$F{atedimento_fk}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="162" y="4" width="230" height="30" uuid="7924a6ec-06a7-4559-ac39-99b1db71483c"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Relatório de Pagamentos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="27" width="100" height="30" uuid="90c781ac-a441-4f23-8800-da7b1e2ea57c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="467374a8-2bdb-42d7-942d-ff7e2c364ad4"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ID Atendimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="27" width="100" height="30" uuid="cd1a8bd6-8b2b-467b-93a3-7cd7886fec97">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8ccdc25-fdf7-4a4f-81e8-c31e05f1c112"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tipo Pagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="27" width="100" height="30" uuid="284aaf0a-5d75-4d25-845c-7607659a4f3e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34a3a580-570d-4a34-bb84-88cb53b6b68f"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Quantidade Parcelas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="27" width="100" height="30" uuid="a48279e2-2658-4d3e-8b97-a4c023ac3499">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8024b80f-25a6-4597-b985-427ee6445b23"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Data Pagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="27" width="100" height="30" uuid="530cd7de-e1ab-486d-8e2e-537c16ad93ce">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="81e823f6-867f-4138-a1df-45389f2f0d69"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Data Vencimento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="0" width="100" height="29" uuid="45cbba2f-f760-47b3-a471-405a44acffd1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="467374a8-2bdb-42d7-942d-ff7e2c364ad4"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{atedimento_fk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="100" height="29" uuid="b6c90318-b1a7-4073-83eb-9b0662f4fd4f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8ccdc25-fdf7-4a4f-81e8-c31e05f1c112"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PAGAMENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="100" height="29" uuid="883e28c0-f9ab-470f-9fd4-9ae75cc602b1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34a3a580-570d-4a34-bb84-88cb53b6b68f"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{qtdParcelas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="0" width="100" height="29" uuid="f8d20dca-1e3c-4846-9215-298398c36f6f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8024b80f-25a6-4597-b985-427ee6445b23"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataPagamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="100" height="29" uuid="788fcd83-af81-42de-8b25-433c8288e214">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="81e823f6-867f-4138-a1df-45389f2f0d69"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dataVencimento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
